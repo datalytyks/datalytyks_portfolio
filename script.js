@@ -4,11 +4,44 @@
 
 // Render all projects on page load
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     renderFilters();
     renderProjects();
     setupFilterListeners();
     setupLightbox();
 });
+
+// ============================================
+// THEME TOGGLE
+// ============================================
+
+function initTheme() {
+    const toggle = document.getElementById('theme-toggle');
+    
+    // Check for saved preference or system preference
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (!systemPrefersDark) {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+    
+    // Toggle handler
+    toggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        if (newTheme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', newTheme);
+        }
+        
+        localStorage.setItem('portfolio-theme', newTheme);
+    });
+}
 
 // ============================================
 // RENDERING FUNCTIONS
