@@ -118,6 +118,210 @@
 
     <!-- Load projects data first, then main script -->
     <script src="projects.js"></script>
-    <script src="script.js"></script>
+    <script>
+    // ============================================
+    // PORTFOLIO SITE - Main Script
+    // ============================================
+
+    // Render all projects on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        initTheme();
+        renderFilters();
+        renderProjects();
+        setupFilterListeners();
+        setupLightbox();
+    });
+
+    // ============================================
+    // THEME TOGGLE
+    // ============================================
+
+    function initTheme() {
+        var toggle = document.getElementById('theme-toggle');
+        
+        // Check for saved preference or system preference
+        var savedTheme = localStorage.getItem('portfolio-theme');
+        var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (!systemPrefersDark) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+        
+        // Toggle handler
+        toggle.addEventListener('click', function() {
+            var currentTheme = document.documentElement.getAttribute('data-theme');
+            var newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            if (newTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', newTheme);
+            }
+            
+            localStorage.setItem('portfolio-theme', newTheme);
+        });
+    }
+
+    // ============================================
+    // RENDERING FUNCTIONS
+    // ============================================
+
+    function renderFilters() {
+        var container = document.getElementById('filter-buttons');
+        
+        // Get all unique tags used in projects
+        var usedTags = new Set();
+        PROJECTS.forEach(function(project) {
+            project.tags.forEach(function(tag) { usedTags.add(tag); });
+        });
+        
+        // Build filter buttons HTML
+        var html = '<button class="filter-btn active" data-filter="all">All Projects</button>';
+        
+        usedTags.forEach(function(tagId) {
+            var tag = DEFINED_TAGS[tagId];
+            if (tag) {
+                html += '<button class="filter-btn" data-filter="' + tagId + '">' + tag.label + '</button>';
+            }
+        });
+        
+        container.innerHTML = html;
+    }
+
+    function renderProjects() {
+        var container = document.getElementById('projects-grid');
+        container.innerHTML = PROJECTS.map(function(project) { return renderProjectCard(project); }).join('');
+    }
+
+    function renderProjectCard(project) {
+        var tagsHtml = project.tags.map(function(tagId) {
+            var tag = DEFINED_TAGS[tagId];
+            if (!tag) return '';
+            return '<span class="tech-tag"><img src="' + tag.icon + '" alt="' + tag.label + '">' + tag.label + '</span>';
+        }).join('');
+
+        var architectureHtml = '';
+        if (project.architecture) {
+            var archNodes = project.architecture.map(function(node, i) {
+                var arrow = i > 0 ? '<span class="arch-arrow">→</span>' : '';
+                var highlightClass = node.highlight ? 'highlight' : '';
+                return arrow + '<div class="arch-node ' + highlightClass + '"><div class="arch-node-label">' + node.label + '</div><div class="arch-node-name">' + node.name + '</div></div>';
+            }).join('');
+            architectureHtml = '<div class="detail-section"><h4>Solution Architecture</h4><div class="architecture-diagram"><div class="arch-flow">' + archNodes + '</div></div></div>';
+        }
+
+        var featuresHtml = '';
+        if (project.features) {
+            var featureItems = project.features.map(function(f) {
+                return '<li><strong>' + f.title + '</strong> — ' + f.description + '</li>';
+            }).join('');
+            featuresHtml = '<div class="detail-section"><h4>Key Features Built</h4><ul>' + featureItems + '</ul></div>';
+        }
+
+        var highlightsHtml = '';
+        if (project.highlights) {
+            var highlightItems = project.highlights.map(function(h) {
+                return '<li>' + h + '</li>';
+            }).join('');
+            highlightsHtml = '<div class="detail-section"><h4>Technical Highlights</h4><ul>' + highlightItems + '</ul></div>';
+        }
+
+        var screenshotsHtml = '';
+        if (project.screenshots && project.screenshots.length > 0) {
+            var screenshotItems = project.screenshots.map(function(s) {
+                var content = s.url 
+                    ? '<img src="' + s.url + '" alt="' + s.alt + '">'
+                    : '<div class="screenshot-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>' + s.placeholder + '</span></div>';
+                return '<div class="screenshot-item" onclick="openLightbox(this)">' + content + '</div>';
+            }).join('');
+            screenshotsHtml = '<div class="detail-section"><h4>Screenshots</h4><div class="screenshots-gallery">' + screenshotItems + '</div></div>';
+        }
+
+        var challengeHtml = project.challenge ? '<div class="detail-section"><h4>The Challenge</h4><p>' + project.challenge + '</p></div>' : '';
+
+        return '<article class="project-card" data-tags="' + project.tags.join(',') + '" data-id="' + project.id + '">' +
+            '<div class="project-header" onclick="toggleProject(this)">' +
+                '<div class="project-meta">' +
+                    '<span class="project-type">' + project.type + '</span>' +
+                    '<span class="project-date">' + project.date + '</span>' +
+                '</div>' +
+                '<h3 class="project-title">' + project.title + '</h3>' +
+                '<p class="project-summary">' + project.summary + '</p>' +
+                '<div class="tech-stack">' + tagsHtml + '</div>' +
+            '</div>' +
+            '<div class="project-details">' +
+                '<div class="project-details-inner">' +
+                    challengeHtml +
+                    architectureHtml +
+                    featuresHtml +
+                    highlightsHtml +
+                    screenshotsHtml +
+                '</div>' +
+            '</div>' +
+            '<div class="expand-indicator">' +
+                '<span>View Details</span>' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>' +
+            '</div>' +
+        '</article>';
+    }
+
+    // ============================================
+    // INTERACTION HANDLERS
+    // ============================================
+
+    function toggleProject(header) {
+        var card = header.closest('.project-card');
+        card.classList.toggle('expanded');
+        
+        // Update indicator text
+        var indicator = card.querySelector('.expand-indicator span');
+        indicator.textContent = card.classList.contains('expanded') ? 'Hide Details' : 'View Details';
+    }
+
+    function setupFilterListeners() {
+        document.getElementById('filter-buttons').addEventListener('click', function(e) {
+            if (!e.target.classList.contains('filter-btn')) return;
+            
+            // Update active state
+            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+            e.target.classList.add('active');
+
+            var filter = e.target.dataset.filter;
+            
+            document.querySelectorAll('.project-card').forEach(function(card) {
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    var tags = card.dataset.tags ? card.dataset.tags.split(',') : [];
+                    card.style.display = tags.includes(filter) ? 'block' : 'none';
+                }
+            });
+        });
+    }
+
+    // ============================================
+    // LIGHTBOX
+    // ============================================
+
+    function setupLightbox() {
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    }
+
+    function openLightbox(element) {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+    }
+    </script>
 </body>
 </html>
