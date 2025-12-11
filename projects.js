@@ -34,15 +34,17 @@ const PROJECTS = [
         
         // Technical highlights
         highlights: [
+            "Supabase Edge Function is the core feature that handles the API call and responds with the data",
             "Supabase PostgreSQL database stores partner credentials, rate limit counters, and lead records with full audit trail",
-            "Static documentation site hosted on DigitalOcean Spaces for reliable, fast access",
+            "Static documentation site hosted on DigitalOcean App Platform for reliable, fast access",
             "Error handling with descriptive JSON responses following REST best practices"
         ],
         
         // Screenshots - add your Supabase storage URLs here
         screenshots: [
-            { url: "", alt: "API Documentation Site", placeholder: "API Documentation Site" },
-            { url: "", alt: "Supabase Schema", placeholder: "Supabase Schema" }
+            { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_api/vdt_homes_api_docs.png", alt: "API Documentation Site", placeholder: "API Documentation Site" },
+            { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_api/vdt_homes_api_db_schema.png", alt: "Supabase Schema", placeholder: "Supabase Schema" },
+            { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_api/vdt_homes_api_function_snippet.png", alt: "Edge Function Snippet", placeholder: "Edge Function Snippet" }
         ]
     },
 
