@@ -92,27 +92,39 @@ const PROJECTS = [
 const DEFINED_TAGS = {
     n8n: {
         label: "n8n",
-        icon: "https://n8n.io/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/software_logos/n8n-logo-v2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2Z0d2FyZV9sb2dvcy9uOG4tbG9nby12Mi5wbmciLCJpYXQiOjE3NjU0NzE4NzAsImV4cCI6MTc5NzAwNzg3MH0.e2yfxKtOBZnwmY02Fu4d5YCtXzsZxUW7iKcDTlfQcFE"
     },
     supabase: {
         label: "Supabase",
-        icon: "https://supabase.com/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/software_logos/supabase-logo-icon.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2Z0d2FyZV9sb2dvcy9zdXBhYmFzZS1sb2dvLWljb24ucG5nIiwiaWF0IjoxNzY1NDcxODkzLCJleHAiOjE3OTcwMDc4OTN9.pedVXTn5QPjCC6v1dJKqRw3KdjfQ1SJOwXzQC5z9B1o"
     },
     hookdeck: {
-        label: "Hookdeck",
-        icon: "https://hookdeck.com/favicon.ico"
+        label: "HookDeck",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/software_logos/hookdeck-logo-v2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2Z0d2FyZV9sb2dvcy9ob29rZGVjay1sb2dvLXYyLnBuZyIsImlhdCI6MTc2NTQ3MTkwNCwiZXhwIjoxNzk3MDA3OTA0fQ.dBmpDTIif8YCsYysXQdPH9ucv9gW2vlNHo-cSn0JDCM"
     },
     digitalocean: {
         label: "DigitalOcean",
-        icon: "https://www.digitalocean.com/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/software_logos/digitalocean-logo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2Z0d2FyZV9sb2dvcy9kaWdpdGFsb2NlYW4tbG9nby5wbmciLCJpYXQiOjE3NjU0NzE5MTksImV4cCI6MTc5NzAwNzkxOX0.rZXk-khih2Bsjv3fJULBh1DCIcpHnIpiD-IEsGkFexI"
     },
     retool: {
         label: "Retool",
-        icon: "https://retool.com/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/software_logos/retool-logo-v2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2Z0d2FyZV9sb2dvcy9yZXRvb2wtbG9nby12Mi5wbmciLCJpYXQiOjE3NjU0NzE5MzAsImV4cCI6MTc5NzAwNzkzMH0.nlIY1Vx7LrzoykOSc5dMtj0S-HcHVreQTOAqAQKyS68"
     },
     make: {
         label: "Make",
-        icon: "https://www.make.com/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/software_logos/Make-App-Icon-Circle.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2Z0d2FyZV9sb2dvcy9NYWtlLUFwcC1JY29uLUNpcmNsZS5wbmciLCJpYXQiOjE3NjU0NzE5NDIsImV4cCI6MTc5NzAwNzk0Mn0.JHE8Z3VUEqEJdwx5tKGUBAZood-56_slfUsVAFx68Yw"
+    },
+    github: {
+        label: "GitHub",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/software_logos/github-logo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2Z0d2FyZV9sb2dvcy9naXRodWItbG9nby5wbmciLCJpYXQiOjE3NjU0NzE5OTIsImV4cCI6MTc5NzAwNzk5Mn0.DyXY_aoMtP91REwH3bb0fe4p1E_7wPW1F0G5XBom6js"
+    },
+    metabase: {
+        label: "Metabase",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/software_logos/metabase-logo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2Z0d2FyZV9sb2dvcy9tZXRhYmFzZS1sb2dvLnBuZyIsImlhdCI6MTc2NTQ3MjA0NSwiZXhwIjoxNzk3MDA4MDQ1fQ.QLkL_KKewpGTXOA8eq3sjPfnS3v2Vj66SKaUJo_0D_g"
+    },
+    postman: {
+        label: "Postman",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/software_logos/postman-logo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2Z0d2FyZV9sb2dvcy9wb3N0bWFuLWxvZ28ucG5nIiwiaWF0IjoxNzY1NDcyMTU2LCJleHAiOjE3OTcwMDgxNTZ9.7HlnQ2jC2kPOdW3OcNXjCqAEOjeBtKhc0ywfzgCjne0"
     },
     fub: {
         label: "Follow Up Boss",
