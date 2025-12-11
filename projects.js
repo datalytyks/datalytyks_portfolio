@@ -7,27 +7,26 @@ const PROJECTS = [
         id: "vdt-partner-api",
         title: "Real Estate Partner API System",
         type: "Integration System",
-        date: "2024",
-        tags: ["n8n", "supabase", "hookdeck", "digitalocean", "fub"],
-        summary: "A comprehensive API integration system enabling external partners to submit leads and receive real-time updates via webhooks. Features secure token-based authentication, intelligent rate limiting, and professional API documentation.",
+        date: "2025",
+        tags: ["supabase", "digitalocean"],
+        summary: "A comprehensive API integration system enabling external partners to query their partner data in the VDT Homes database. Features secure token-based authentication, intelligent rate limiting, and professional API documentation.",
         
         // Detailed content sections
-        challenge: "The client needed a way for external partners to programmatically submit real estate leads while maintaining data integrity, security, and the ability to receive status updates. The solution needed to integrate with their existing CRM (Follow Up Boss) and provide partners with a professional, well-documented API experience.",
+        challenge: "The client needed a way for external partners to programmatically fetch their data while maintaining data integrity, security, and the ability to receive status updates. The solution needed to leverage the existing database and provide partners with a professional, well-documented API experience.",
         
         // Architecture flow - each node in order
         architecture: [
             { label: "Partner", name: "API Request" },
-            { label: "Gateway", name: "Hookdeck", highlight: true },
-            { label: "Processing", name: "n8n", highlight: true },
+            { label: "Gateway", name: "Supabase", highlight: true },
+            { label: "Processing", name: "Supabase", highlight: true },
             { label: "Storage", name: "Supabase" },
-            { label: "CRM", name: "Follow Up Boss" }
+            { label: "Partner", name: "API Response" }
         ],
         
         // Key features - supports **bold** markdown in text
         features: [
             { title: "Token-Based Authentication", description: "Secure API key validation with partner-specific tokens stored in Supabase" },
             { title: "Intelligent Rate Limiting", description: "Per-partner request limits with sliding window tracking to prevent abuse" },
-            { title: "Webhook Delivery System", description: "Real-time status updates pushed to partner endpoints when lead status changes" },
             { title: "Data Validation & Transformation", description: "Comprehensive input validation with proper error responses and CRM field mapping" },
             { title: "Partner Dashboard Data", description: "Database views enabling partners to track their submission history and success rates" },
             { title: "Professional API Documentation", description: "Hosted documentation site with endpoint references, authentication guides, and code examples" }
@@ -35,8 +34,6 @@ const PROJECTS = [
         
         // Technical highlights
         highlights: [
-            "Hookdeck provides reliable webhook ingestion with automatic retries and request logging",
-            "n8n workflows handle all business logic including auth, validation, CRM integration, and webhook dispatch",
             "Supabase PostgreSQL database stores partner credentials, rate limit counters, and lead records with full audit trail",
             "Static documentation site hosted on DigitalOcean Spaces for reliable, fast access",
             "Error handling with descriptive JSON responses following REST best practices"
@@ -45,7 +42,6 @@ const PROJECTS = [
         // Screenshots - add your Supabase storage URLs here
         screenshots: [
             { url: "", alt: "API Documentation Site", placeholder: "API Documentation Site" },
-            { url: "", alt: "n8n Workflow Overview", placeholder: "n8n Workflow Overview" },
             { url: "", alt: "Supabase Schema", placeholder: "Supabase Schema" }
         ]
     },
