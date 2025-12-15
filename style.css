@@ -513,6 +513,154 @@ header {
     color: var(--text-primary);
 }
 
+/* Comparison Section */
+.comparison-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 16px;
+    align-items: stretch;
+}
+
+.comparison-column {
+    flex: 1;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+}
+
+.comparison-before {
+    border-left: 3px solid var(--text-muted);
+}
+
+.comparison-after {
+    border-left: 3px solid var(--accent);
+}
+
+.comparison-header {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.comparison-before .comparison-header {
+    color: var(--text-muted);
+}
+
+.comparison-after .comparison-header {
+    color: var(--accent);
+}
+
+.comparison-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comparison-column ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.comparison-before ul li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.comparison-after ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
+.comparison-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 1.5rem;
+    padding: 0 8px;
+}
+
+/* Comparison Metrics */
+.comparison-metrics {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.metrics-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.metrics-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.comparison-before .metrics-value {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.comparison-after .metrics-value {
+    color: var(--accent);
+}
+
+/* Comparison Savings Banner */
+.comparison-savings {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.savings-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.savings-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.savings-percentage {
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--bg-primary);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
 /* Screenshots Gallery */
 .screenshots-gallery {
     display: grid;
@@ -700,5 +848,25 @@ footer {
 
     .arch-branch-list {
         width: 100%;
+    }
+
+    .comparison-container {
+        flex-direction: column;
+    }
+
+    .comparison-divider {
+        transform: rotate(90deg);
+        padding: 12px 0;
+    }
+
+    .comparison-savings {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .savings-value {
+        flex-direction: column;
+        gap: 8px;
     }
 }
