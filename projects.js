@@ -47,6 +47,52 @@ const PROJECTS = [
             { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_api/vdt_homes_api_function_snippet.png", alt: "Edge Function Snippet", placeholder: "Edge Function Snippet" }
         ]
     },
+    {
+    id: "make-to-n8n-migration",
+    title: "Make.com to n8n Migration & Cost Optimization",
+    type: "Workflow Migration",
+    date: "2025",
+    tags: ["n8n", "Docker", "DigitalOcean"],
+    
+    summary: "Migrated high-volume automation workflows from Make.com to self-hosted n8n, reducing monthly automation costs by over $1,500 while maintaining full functionality and enabling unlimited workflow expansion.",
+    
+    challenge: "The company's most critical automation scenarios were consuming the majority of Make.com's monthly operation credits, creating an unsustainable cost structure that limited the ability to add new automations. With growing business needs requiring additional workflows, the existing platform's usage-based pricing model was becoming a bottleneck to scaling operations efficiently.",
+    
+    architecture: [
+        { label: "Infrastructure", name: "DigitalOcean Droplet" },
+        { label: "Container", name: "Docker Deployment" },
+        { label: "Automation", name: "n8n Self-Hosted", highlight: true },
+        { label: "Workflow 1", name: "Converted Scenario" },
+        { label: "Workflow 2", name: "Converted Scenario" }
+    ],
+    
+    features: [
+        { 
+            title: "Self-Hosted Infrastructure", 
+            description: "Deployed n8n on a DigitalOcean Droplet using Docker, providing full control over the automation environment with predictable fixed monthly costs instead of usage-based billing." 
+        },
+        { 
+            title: "High-Volume Workflow Migration", 
+            description: "Successfully converted the two most operation-intensive Make.com scenarios to n8n, maintaining all existing functionality while eliminating per-operation charges." 
+        },
+        { 
+            title: "Scalable Architecture", 
+            description: "Built a foundation that supports unlimited workflow additions without incremental cost increases, removing previous constraints on automation expansion." 
+        }
+    ],
+    
+    highlights: [
+        "Reduced monthly automation costs by over $1,500 (75%+ savings on infrastructure)",
+        "Maintained 100% functionality during migration with zero business disruption",
+        "Created scalable platform for unlimited future workflow expansion",
+        "Established Docker-based deployment for easy updates and maintenance"
+    ],
+    
+    screenshots: [
+        { url: "", alt: "Description", placeholder: "Placeholder Label" },
+        { url: "", alt: "Description", placeholder: "Placeholder Label" }
+    ]
+},
 
     // ============================================
     // ADD NEW PROJECTS BELOW - Copy this template:
@@ -108,6 +154,10 @@ const DEFINED_TAGS = {
         label: "DigitalOcean",
         icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/digitalocean-logo.png"
     },
+    docker: {
+        label: "Docker",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/docker-logo.png"
+    },
     retool: {
         label: "Retool",
         icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/retool-logo-v2.png"
@@ -130,35 +180,31 @@ const DEFINED_TAGS = {
     },
     fub: {
         label: "Follow Up Boss",
-        icon: "https://www.followupboss.com/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/fub-logo.png"
     },
     monday: {
         label: "Monday.com",
-        icon: "https://monday.com/favicon.ico"
-    },
-    discord: {
-        label: "Discord",
-        icon: "https://discord.com/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/monday-logo.png"
     },
     postgresql: {
         label: "PostgreSQL",
-        icon: "https://www.postgresql.org/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/postgresql-logo.png"
     },
     bigquery: {
         label: "BigQuery",
-        icon: "https://www.gstatic.com/devrel-devsite/prod/v0e0f589edd85502a40d78d7d0825db8ea5ef3b99ab4070381ee86977c9168730/cloud/images/favicons/onecloud/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/bigquery-logo.jpg"
     },
     zapier: {
         label: "Zapier",
-        icon: "https://zapier.com/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/zapier-logo.png"
     },
     airtable: {
         label: "Airtable",
-        icon: "https://airtable.com/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/airtable-logo.png"
     },
     webflow: {
         label: "Webflow",
-        icon: "https://webflow.com/favicon.ico"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/webflow-logo.png"
     },
     // Add more tags as needed:
     // tagid: { label: "Display Name", icon: "https://example.com/favicon.ico" },
