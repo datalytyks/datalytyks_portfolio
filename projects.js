@@ -62,8 +62,14 @@ const PROJECTS = [
         { label: "Infrastructure", name: "DigitalOcean Droplet" },
         { label: "Container", name: "Docker Deployment" },
         { label: "Automation", name: "n8n Self-Hosted", highlight: true },
-        { label: "Workflow 1", name: "Converted Scenario" },
-        { label: "Workflow 2", name: "Converted Scenario" }
+        {
+            label: "Active Workflows",
+            name: "Converted Scenarios",
+            branches: [
+        { name: "New Call Conversion Logic" },
+        { name: "Make Execution Tracking" }
+                ]
+        }
     ],
     
     features: [
@@ -89,8 +95,8 @@ const PROJECTS = [
     ],
     
     screenshots: [
-        { url: "", alt: "Description", placeholder: "Placeholder Label" },
-        { url: "", alt: "Description", placeholder: "Placeholder Label" }
+        { url: "", alt: "Description", placeholder: "Coming Soon!" },
+        { url: "", alt: "Description", placeholder: "Coming Soon!" }
     ]
 },
 
@@ -102,7 +108,7 @@ const PROJECTS = [
         id: "project-slug",
         title: "Project Title",
         type: "Project Type", // e.g., "Workflow Automation", "Internal Tool", "Data Pipeline", "Integration System"
-        date: "2024",
+        date: "2025",
         tags: ["n8n", "supabase"], // use defined tags from DEFINED_TAGS below
         summary: "Brief 1-2 sentence description of the project.",
         
@@ -111,7 +117,15 @@ const PROJECTS = [
         architecture: [
             { label: "Step 1", name: "Component" },
             { label: "Step 2", name: "Component", highlight: true },
-            { label: "Step 3", name: "Component" }
+            { label: "Step 3", name: "Component" },
+            {
+            label: "Branch",
+            name: "Branch Name",
+            branches: [
+        { name: "Branch 1" },
+        { name: "Branch 2" }
+                ]
+        }
         ],
         
         features: [
@@ -126,7 +140,7 @@ const PROJECTS = [
         
         screenshots: [
             { url: "https://your-supabase-url.com/image.png", alt: "Description", placeholder: "Label" },
-            { url: "", alt: "Description", placeholder: "Placeholder Label" } // empty url shows placeholder
+            { url: "", alt: "Description", placeholder: "Coming Soon!" } // empty url shows placeholder
         ]
     },
     */
