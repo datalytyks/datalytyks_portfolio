@@ -117,7 +117,7 @@ const PROJECTS = [
         label: "Processing", 
         name: "Hookdeck Pipeline", 
         highlight: true,
-        processes: [
+        branches: [
             { name: "Deduplication" },
             { name: "Transformation" },
             { name: "Filtering" },
@@ -153,6 +153,10 @@ const PROJECTS = [
         { 
             title: "Bidirectional Integration Support", 
             description: "Enabled webhook communication in both directions between development tools (Make to Retool, Retool to n8n) with consistent monitoring and error handling across all paths." 
+        },
+        {
+            title: "Project-based Seperation",
+            description: "Allows for seperation of product-based webhooks or internal webhooks, each with seperate billing and throughput levels. Each project also has seperate integration and API capability."
         }
     ],
     
@@ -160,7 +164,8 @@ const PROJECTS = [
         "Centralized 100% of webhook infrastructure for platform events and inter-app communication",
         "Established visible audit trail for all webhook deliveries with automatic retry and failure management",
         "Created automated partner onboarding that provisions webhook endpoints without manual intervention",
-        "Implemented flexible routing system supporting multiple simultaneous destinations with custom transformation logic"
+        "Implemented flexible routing system supporting multiple simultaneous destinations with custom transformation logic",
+        "Seperates product webhooks and internal webhooks while maintaining enterprise-grade control and access"
     ],
     
     screenshots: []
