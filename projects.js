@@ -95,8 +95,8 @@ const PROJECTS = [
     ],
     
     screenshots: [
-        { url: "", alt: "Description", placeholder: "Coming Soon!" },
-        { url: "", alt: "Description", placeholder: "Coming Soon!" }
+        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/bulk_data_sync_workflow.png", alt: "n8n Make ETL Workflow", placeholder: "n8n Make ETL Workflow" },
+        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/complex_webhook_workflow.png", alt: "Complex New Call Workflow", placeholder: "Complex New Call Workflow" }
     ]
 },
 
