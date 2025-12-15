@@ -111,7 +111,7 @@ const PROJECTS = [
     challenge: "The business's webhook infrastructure was fragmented and opaque, with direct connections between source applications and destinations making it impossible to debug failed deliveries, manage rate limits, or understand data flow. Without visibility into webhook traffic or the ability to transform payloads in transit, each integration required custom handling, and partner agencies had no standardized way to receive data from the platform, creating operational bottlenecks and integration complexity.",
     
     architecture: [
-    { label: "Sources", name: "Platform Events (Follow Up Boss, etc.)" },
+    { label: "Sources", name: "Platform Events" },
     { label: "Ingestion", name: "Hookdeck Endpoints" },
     { 
         label: "Processing", 
