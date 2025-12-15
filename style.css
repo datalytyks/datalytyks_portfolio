@@ -459,6 +459,60 @@ header {
     font-size: 1.2rem;
 }
 
+/* Architecture Node Wrapper (for branches) */
+.arch-node-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Architecture Branches */
+.arch-branches {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.arch-branch-connector {
+    width: 2px;
+    height: 16px;
+    background: var(--accent);
+    opacity: 0.5;
+}
+
+.arch-branch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.arch-branch-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-align: center;
+    position: relative;
+}
+
+.arch-branch-item::before {
+    content: '↳';
+    position: absolute;
+    left: -16px;
+    color: var(--accent);
+    opacity: 0.6;
+}
+
+.arch-branch-item.highlight {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+    color: var(--text-primary);
+}
+
 /* Screenshots Gallery */
 .screenshots-gallery {
     display: grid;
@@ -634,5 +688,13 @@ footer {
 
     .arch-arrow {
         transform: rotate(90deg);
+    }
+
+    .arch-branch-item::before {
+        display: none;
+    }
+
+    .arch-branch-list {
+        width: 100%;
     }
 }
