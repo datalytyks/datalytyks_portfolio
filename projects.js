@@ -92,12 +92,78 @@ const PROJECTS = [
         "Maintained 100% functionality during migration with zero business disruption",
         "Created scalable platform for unlimited future workflow expansion",
         "Established Docker-based deployment for easy updates and maintenance"
-    ],
+        ],
     
     screenshots: [
         { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/bulk_data_sync_workflow.png", alt: "Make Execution Tracking", placeholder: "Make Execution Tracking" },
         { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/complex_webhook_workflow.png", alt: "New Call Conversion Logic", placeholder: "New Call Conversion Logic" }
-    ]
+        ]
+    },
+    {
+    id: "hookdeck-webhook-implementation",
+    title: "Enterprise Hookdeck Infrastructure Implemetation",
+    type: "Integration Infrastructure",
+    date: "2025",
+    tags: ["hookdeck", "fub", "make", "n8n", "retool"],
+    
+    summary: "Centralized all webhook infrastructure through Hookdeck, establishing a visible, manageable pipeline for platform events and inter-application communications with advanced routing, transformation, and filtering capabilities that extended to partner agencies through automated provisioning.",
+    
+    challenge: "The business's webhook infrastructure was fragmented and opaque, with direct connections between source applications and destinations making it impossible to debug failed deliveries, manage rate limits, or understand data flow. Without visibility into webhook traffic or the ability to transform payloads in transit, each integration required custom handling, and partner agencies had no standardized way to receive data from the platform, creating operational bottlenecks and integration complexity.",
+    
+    architecture: [
+    { label: "Sources", name: "Platform Events (Follow Up Boss, etc.)" },
+    { label: "Ingestion", name: "Hookdeck Endpoints" },
+    { 
+        label: "Processing", 
+        name: "Hookdeck Pipeline", 
+        highlight: true,
+        processes: [
+            { name: "Deduplication" },
+            { name: "Transformation" },
+            { name: "Filtering" },
+            { name: "Delay Logic" },
+            { name: "Retry Management" }
+        ]
+    },
+    { 
+        label: "Destinations", 
+        name: "Multi-Destination Routing",
+        branches: [
+            { name: "Make.com Workflows" },
+            { name: "n8n Automation" },
+            { name: "Retool Applications" },
+            { name: "Partner Agency Endpoints" }
+        ]
+    }
+],
+    
+    features: [
+        { 
+            title: "Unified Webhook Management", 
+            description: "Consolidated all webhook traffic from source applications through Hookdeck, providing complete visibility into delivery status, retry logic, and payload inspection for every event flowing through the system." 
+        },
+        { 
+            title: "Advanced Traffic Control", 
+            description: "Implemented custom routing rules, concurrency controls, payload transformations, and filtering logic to intelligently direct webhook events to appropriate destinations based on content, version, or business rules." 
+        },
+        { 
+            title: "Automated Partner Provisioning", 
+            description: "Built self-service workflow that automatically generates Hookdeck endpoints for partner agencies, allowing them to receive platform data without manual infrastructure setup or credential management." 
+        },
+        { 
+            title: "Bidirectional Integration Support", 
+            description: "Enabled webhook communication in both directions between development tools (Make to Retool, Retool to n8n) with consistent monitoring and error handling across all paths." 
+        }
+    ],
+    
+    highlights: [
+        "Centralized 100% of webhook infrastructure for platform events and inter-app communication",
+        "Established visible audit trail for all webhook deliveries with automatic retry and failure management",
+        "Created automated partner onboarding that provisions webhook endpoints without manual intervention",
+        "Implemented flexible routing system supporting multiple simultaneous destinations with custom transformation logic"
+    ],
+    
+    screenshots: []
 },
 
     // ============================================
