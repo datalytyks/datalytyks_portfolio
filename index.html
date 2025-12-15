@@ -219,7 +219,18 @@
             var archNodes = project.architecture.map(function(node, i) {
                 var arrow = i > 0 ? '<span class="arch-arrow">→</span>' : '';
                 var highlightClass = node.highlight ? 'highlight' : '';
-                return arrow + '<div class="arch-node ' + highlightClass + '"><div class="arch-node-label">' + node.label + '</div><div class="arch-node-name">' + node.name + '</div></div>';
+                var branchesHtml = '';
+                
+                // Check if this node has branches
+                if (node.branches && node.branches.length > 0) {
+                    var branchItems = node.branches.map(function(branch) {
+                        var branchHighlight = branch.highlight ? 'highlight' : '';
+                        return '<div class="arch-branch-item ' + branchHighlight + '">' + branch.name + '</div>';
+                    }).join('');
+                    branchesHtml = '<div class="arch-branches"><div class="arch-branch-connector"></div><div class="arch-branch-list">' + branchItems + '</div></div>';
+                }
+                
+                return arrow + '<div class="arch-node-wrapper"><div class="arch-node ' + highlightClass + '"><div class="arch-node-label">' + node.label + '</div><div class="arch-node-name">' + node.name + '</div></div>' + branchesHtml + '</div>';
             }).join('');
             architectureHtml = '<div class="detail-section"><h4>Solution Architecture</h4><div class="architecture-diagram"><div class="arch-flow">' + archNodes + '</div></div></div>';
         }
