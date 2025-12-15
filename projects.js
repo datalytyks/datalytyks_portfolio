@@ -52,7 +52,7 @@ const PROJECTS = [
     title: "Make.com to n8n Migration & Cost Optimization",
     type: "Workflow Migration",
     date: "2025",
-    tags: ["n8n", "docker", "digitalOcean"],
+    tags: ["n8n", "docker", "digitalocean"],
     
     summary: "Migrated high-volume automation workflows from Make.com to self-hosted n8n, reducing monthly automation costs by over $1,500 while maintaining full functionality and enabling unlimited workflow expansion.",
     
