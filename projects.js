@@ -66,12 +66,12 @@ const PROJECTS = [
                 "Limited to platform's available integrations",
                 "No direct coding ability outside of Enterprise plan"
                 "Vendor-controlled infrastructure"
-            ],
+                ],
             metrics: {
                 label: "Monthly Cost",
                 value: "$2,200/mo"
-            }
-        },
+                }
+            },
         after: {
             title: "n8n Self-Hosted",
             points: [
@@ -79,18 +79,18 @@ const PROJECTS = [
                 "Full code access for custom integrations",
                 "Fully available code nodes for both JS or Python",
                 "Self-managed infrastructure with full control"
-            ],
+                ],
             metrics: {
                 label: "Monthly Cost",
                 value: "$200/mo"
-            }
-        },
+                }
+            },
         savings: {
             label: "Monthly Savings",
             value: "$2000/mo",
             percentage: "91%"
-        }
-    }
+            }
+        },
     
     architecture: [
         { label: "Infrastructure", name: "DigitalOcean Droplet" },
@@ -202,7 +202,10 @@ const PROJECTS = [
         "Seperates product webhooks and internal webhooks while maintaining enterprise-grade control and access"
     ],
     
-    screenshots: []
+    screenshots: [
+        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/hookdeck_implementation/hookdeck_event_dashboard.png", alt: "Hookdeck Event Dashboard", placeholder: "Hookdeck Event Dashboard" },
+        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/hookdeck_implementation/hookdeck_connections_page.png", alt: "Hookdeck Connection Management", placeholder: "Hookdeck Connection Management" }
+    ]
 },
 
     // ============================================
