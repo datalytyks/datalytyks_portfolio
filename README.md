@@ -28,33 +28,85 @@ Edit `projects.js` and add a new object to the `PROJECTS` array:
 {
     id: "project-slug",                    // Unique identifier (lowercase, hyphens)
     title: "Project Title",
-    type: "Integration System",            // e.g., "Workflow Automation", "Internal Tool", "Data Pipeline"
+    type: "Integration System",            // e.g., "Workflow Automation", "Platform Migration", "Integration Infrastructure"
     date: "2025",
     tags: ["n8n", "supabase"],             // Must match keys in DEFINED_TAGS
     summary: "Brief 1-2 sentence description.",
     
     challenge: "Describe the problem this project solved.",
     
-    architecture: [                        // Optional - shows flow diagram
+    // Optional - for migrations/upgrades/platform comparisons
+    comparison: {
+        before: {
+            title: "Before State",
+            points: [
+                "Pain point 1",
+                "Pain point 2"
+            ],
+            metrics: {                     // Optional
+                label: "Monthly Cost",
+                value: "$299/mo"
+            }
+        },
+        after: {
+            title: "After State",
+            points: [
+                "Improvement 1",
+                "Improvement 2"
+            ],
+            metrics: {                     // Optional
+                label: "Monthly Cost",
+                value: "$48/mo"
+            }
+        },
+        savings: {                         // Optional - shows banner below comparison
+            label: "Monthly Savings",
+            value: "$251/mo",
+            percentage: "84%"              // Optional - shows as badge
+        }
+    },
+    
+    // Optional - shows flow diagram
+    architecture: [
         { label: "Step 1", name: "Component" },
         { label: "Step 2", name: "Component", highlight: true },
-        { label: "Step 3", name: "Component" }
+        { 
+            label: "Step 3", 
+            name: "Component", 
+            branches: [                    // Optional - shows branching items below node
+                { name: "Branch 1" },
+                { name: "Branch 2" }
+            ]
+        }
     ],
     
-    features: [                            // Optional - key features list
+    // Optional - key features list
+    features: [
         { title: "Feature Name", description: "What this feature does" }
     ],
     
-    highlights: [                          // Optional - technical highlights
+    // Optional - technical highlights
+    highlights: [
         "Technical detail or accomplishment"
     ],
     
-    screenshots: [                         // Optional - screenshot gallery
-        { url: "https://your-supabase-url.com/image.png", alt: "Description", placeholder: "Label" },
+    // Optional - screenshot gallery
+    screenshots: [
+        { url: "https://supabase-url.com/image.png", alt: "Description", placeholder: "Label" },
         { url: "", alt: "Description", placeholder: "Placeholder Label" }  // Empty URL shows placeholder
     ]
 }
 ```
+
+### Section Render Order
+
+Sections display in this order (if present):
+1. The Challenge
+2. Comparison
+3. Solution Architecture
+4. Key Features Built
+5. Technical Highlights
+6. Screenshots
 
 ### Adding a New Tool/Tag
 
@@ -80,23 +132,23 @@ const DEFINED_TAGS = {
 
 ## Cache Busting
 
-DigitalOcean App Platform caches static files aggressively. When you update `style.css` or `projects.js`, you must bump the version number in `index.html`:
+### For projects.js (Automatic)
+The site automatically adds a timestamp to `projects.js` requests, so changes appear immediately after deployment. No action needed.
+
+### For style.css (Manual)
+DigitalOcean caches CSS files. When you update `style.css`, bump the version number in `index.html`:
 
 ```html
-<!-- Update these version numbers when files change -->
-<link rel="stylesheet" href="style.css?v=2">
-<script src="projects.js?v=2"></script>
+<link rel="stylesheet" href="style.css?v=7">
 ```
 
-**When to bump versions:**
-- `style.css?v=X` → When you change any styles
-- `projects.js?v=X` → When you add/edit projects or tags
+Increment the number (v=7 → v=8, etc.) each time you modify the CSS.
 
 ---
 
 ## Theming
 
-The site supports dark and light modes via CSS variables.
+The site supports dark and light modes via CSS variables. Users can toggle with the button in the top-right corner. Preference is saved to localStorage.
 
 ### Dark Theme (Default)
 Defined in `:root` in `style.css`
@@ -124,21 +176,30 @@ Defined in `[data-theme="light"]` in `style.css`
 
 ## Image Hosting
 
-All images are hosted in Supabase Storage:
+All images are hosted in Supabase Storage.
 
-**Bucket:** `software_logos` (for tool icons)
+### Tool Icons
+**Bucket:** `software_logos`
 
 **URL Pattern:**
 ```
 https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/[filename].png
 ```
 
-### Uploading New Icons
+### Project Screenshots
+**Bucket:** `portfolio_projects`
 
-1. Go to Supabase Dashboard → Storage → `software_logos` bucket
-2. Upload PNG file (recommended: 64x64 or 128x128, transparent background)
+**URL Pattern:**
+```
+https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/[project_folder]/[filename].png
+```
+
+### Uploading New Images
+
+1. Go to Supabase Dashboard → Storage → select bucket
+2. Upload file (recommended: PNG with transparent background for icons)
 3. Copy the public URL
-4. Add to `DEFINED_TAGS` in `projects.js`
+4. Add to `DEFINED_TAGS` or project `screenshots` array in `projects.js`
 
 ---
 
@@ -150,7 +211,7 @@ The site auto-deploys from GitHub to DigitalOcean App Platform.
 
 1. Commit and push to GitHub
 2. DO App Platform auto-builds and deploys
-3. If changes aren't showing, bump cache-bust versions (see above)
+3. If CSS changes aren't showing, bump `style.css?v=X` version
 
 ### Force Fresh Deploy
 
@@ -163,11 +224,16 @@ If caching issues persist:
 
 ## Features
 
-- **Filter by Technology** - Click tag buttons to filter projects
-- **Expandable Project Cards** - Click cards to reveal full details
-- **Dark/Light Mode Toggle** - Top-right corner button
-- **Screenshot Lightbox** - Click screenshots to view full size
-- **Responsive Design** - Works on mobile and desktop
+| Feature | Description |
+|---------|-------------|
+| **Filter by Technology** | Click tag buttons to filter projects |
+| **Expandable Project Cards** | Click "View Details" to reveal full details |
+| **Dark/Light Mode Toggle** | Top-right corner button, preference saved |
+| **Architecture Diagrams** | Visual flow with optional branching |
+| **Before/After Comparisons** | Side-by-side with optional cost metrics |
+| **Savings Banner** | Highlight cost savings with percentage badge |
+| **Screenshot Lightbox** | Click screenshots to view full size |
+| **Responsive Design** | Works on mobile and desktop |
 
 ---
 
@@ -207,20 +273,45 @@ Edit the footer section in `index.html`:
 
 ## Troubleshooting
 
-### Changes not appearing after deploy
-→ Bump the `?v=X` version numbers in `index.html`
+| Issue | Solution |
+|-------|----------|
+| CSS changes not appearing | Bump `style.css?v=X` version in `index.html` |
+| Projects not rendering | Check browser console for JS errors; validate JSON syntax in `projects.js` |
+| Images not loading | Verify Supabase bucket is public; check URL is correct |
+| Theme toggle not working | Ensure `style.css` has `[data-theme="light"]` block; bump CSS version |
+| PROJECTS is not defined | Syntax error in `projects.js` - check for missing commas |
 
-### Images not loading
-→ Check Supabase bucket is public
-→ Verify URL is correct in `DEFINED_TAGS`
+### Common Syntax Errors in projects.js
 
-### Projects not rendering
-→ Check browser console for JavaScript errors
-→ Validate JSON syntax in `projects.js`
+**Missing commas between array items:**
+```javascript
+// Wrong:
+points: [
+    "Point 1"
+    "Point 2"
+]
 
-### Theme toggle not working
-→ Check `style.css` has `[data-theme="light"]` block
-→ Bump `style.css?v=X` version
+// Correct:
+points: [
+    "Point 1",
+    "Point 2"
+]
+```
+
+**Missing commas between object properties:**
+```javascript
+// Wrong:
+metrics: {
+    label: "Cost"
+    value: "$100"
+}
+
+// Correct:
+metrics: {
+    label: "Cost",
+    value: "$100"
+}
+```
 
 ---
 
@@ -232,3 +323,4 @@ Edit the footer section in `index.html`:
 - Google Fonts (Plus Jakarta Sans, JetBrains Mono)
 - Supabase Storage (image hosting)
 - DigitalOcean App Platform (hosting)
+- GitHub (version control + auto-deploy trigger)
