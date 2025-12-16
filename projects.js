@@ -21,7 +21,6 @@ const PROJECTS = [
             { label: "Partner", name: "API Response" }
         ],
         
-        // Key features - supports **bold** markdown in text
         features: [
             { title: "Token-Based Authentication", description: "Secure API key validation with partner-specific tokens stored in Supabase" },
             { title: "Intelligent Rate Limiting", description: "Per-partner request limits with sliding window tracking to prevent abuse" },
@@ -30,7 +29,6 @@ const PROJECTS = [
             { title: "Professional API Documentation", description: "Hosted documentation site with endpoint references, authentication guides, and code examples" }
         ],
         
-        // Technical highlights
         highlights: [
             "Supabase Edge Function is the core feature that handles the API call and responds with the data",
             "Supabase PostgreSQL database stores partner credentials, rate limit counters, and lead records with full audit trail",
@@ -38,7 +36,6 @@ const PROJECTS = [
             "Error handling with descriptive JSON responses following REST best practices"
         ],
         
-        // Screenshots - add your Supabase storage URLs here
         screenshots: [
             { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_api/vdt_homes_api_docs.png", alt: "API Documentation Site", placeholder: "API Documentation Site" },
             { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_api/vdt_homes_api_db_schema.png", alt: "Supabase Schema", placeholder: "Supabase Schema" },
@@ -62,14 +59,14 @@ const PROJECTS = [
                 points: [
                     "Usage-based pricing per operation",
                     "Limited to platform's available integrations",
-                    "No direct coding ability outside of Enterprise plan"
+                    "No direct coding ability outside of Enterprise plan",
                     "Vendor-controlled infrastructure"
-                    ],
+                ],
                 metrics: {
                     label: "Monthly Cost",
                     value: "$2,200/mo"
-                    }
-                },
+                }
+            },
             after: {
                 title: "n8n Self-Hosted",
                 points: [
@@ -77,18 +74,18 @@ const PROJECTS = [
                     "Full code access for custom integrations",
                     "Fully available code nodes for both JS or Python",
                     "Self-managed infrastructure with full control"
-                    ],
+                ],
                 metrics: {
                     label: "Monthly Cost",
                     value: "$200/mo"
-                    }
-                },
+                }
+            },
             savings: {
                 label: "Monthly Savings",
                 value: "$2000/mo",
                 percentage: "91%"
-                }
-            },
+            }
+        },
         
         architecture: [
             { label: "Infrastructure", name: "DigitalOcean Droplet" },
@@ -100,7 +97,7 @@ const PROJECTS = [
                 branches: [
                     { name: "Make Execution Tracking" },
                     { name: "New Call Conversion Logic" }
-                    ]
+                ]
             }
         ],
         
@@ -124,16 +121,16 @@ const PROJECTS = [
             "Maintained 100% functionality during migration with zero business disruption",
             "Created scalable platform for unlimited future workflow expansion",
             "Established Docker-based deployment for easy updates and maintenance"
-            ],
+        ],
         
         screenshots: [
             { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/bulk_data_sync_workflow.png", alt: "Make Execution Tracking", placeholder: "Make Execution Tracking" },
             { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/complex_webhook_workflow.png", alt: "New Call Conversion Logic", placeholder: "New Call Conversion Logic" }
-            ]
+        ]
     },
     {
         id: "hookdeck-webhook-implementation",
-        title: "Enterprise Hookdeck Infrastructure Implemetation",
+        title: "Enterprise Hookdeck Infrastructure Implementation",
         type: "Integration Infrastructure",
         date: "2025",
         tags: ["hookdeck", "fub", "make", "n8n", "retool"],
@@ -143,94 +140,94 @@ const PROJECTS = [
         challenge: "The business's webhook infrastructure was fragmented and opaque, with direct connections between source applications and destinations making it impossible to debug failed deliveries, manage rate limits, or understand data flow. Without visibility into webhook traffic or the ability to transform payloads in transit, each integration required custom handling, and partner agencies had no standardized way to receive data from the platform, creating operational bottlenecks and integration complexity.",
     
         comparison: {
-        type: "before-after",
-        before: {
-            title: "Before Hookdeck",
-            points: [
-                "Direct webhook connections with no visibility",
-                "Manual debugging of failed deliveries",
-                "No payload transformation capabilities",
-                "Partner agencies required custom integration work"
+            before: {
+                title: "Before Hookdeck",
+                points: [
+                    "Direct webhook connections with no visibility",
+                    "Manual debugging of failed deliveries",
+                    "No payload transformation capabilities",
+                    "Partner agencies required custom integration work"
                 ]
             },
-        after: {
-            title: "After Hookdeck",
-            points: [
-                "Centralized dashboard with full event visibility",
-                "Automatic retry and failure management",
-                "Built-in transformation and filtering",
-                "Self-service partner endpoint provisioning"
+            after: {
+                title: "After Hookdeck",
+                points: [
+                    "Centralized dashboard with full event visibility",
+                    "Automatic retry and failure management",
+                    "Built-in transformation and filtering",
+                    "Self-service partner endpoint provisioning"
                 ]
             }
         },
         
         architecture: [
-        { label: "Sources", name: "Platform Events" },
-        { label: "Ingestion", name: "Hookdeck Endpoints" },
-        { 
-            label: "Processing", 
-            name: "Hookdeck Pipeline", 
-            highlight: true,
-            branches: [
-                { name: "Deduplication" },
-                { name: "Transformation" },
-                { name: "Filtering" },
-                { name: "Delay Logic" },
-                { name: "Retry Management" }
+            { label: "Sources", name: "Platform Events" },
+            { label: "Ingestion", name: "Hookdeck Endpoints" },
+            { 
+                label: "Processing", 
+                name: "Hookdeck Pipeline", 
+                highlight: true,
+                branches: [
+                    { name: "Deduplication" },
+                    { name: "Transformation" },
+                    { name: "Filtering" },
+                    { name: "Delay Logic" },
+                    { name: "Retry Management" }
                 ]
             },
             { 
-            label: "Destinations", 
-            name: "Multi-Destination Routing",
-            branches: [
-                { name: "Make.com Workflows" },
-                { name: "n8n Automation" },
-                { name: "Retool Applications" },
-                { name: "Partner Agency Endpoints" }
+                label: "Destinations", 
+                name: "Multi-Destination Routing",
+                branches: [
+                    { name: "Make.com Workflows" },
+                    { name: "n8n Automation" },
+                    { name: "Retool Applications" },
+                    { name: "Partner Agency Endpoints" }
                 ]
             }
         ],
     
-    features: [
-        { 
-            title: "Unified Webhook Management", 
-            description: "Consolidated all webhook traffic from source applications through Hookdeck, providing complete visibility into delivery status, retry logic, and payload inspection for every event flowing through the system." 
-        },
-        { 
-            title: "Advanced Traffic Control", 
-            description: "Implemented custom routing rules, concurrency controls, payload transformations, and filtering logic to intelligently direct webhook events to appropriate destinations based on content, version, or business rules." 
-        },
-        { 
-            title: "Automated Partner Provisioning", 
-            description: "Built self-service workflow that automatically generates Hookdeck endpoints for partner agencies, allowing them to receive platform data without manual infrastructure setup or credential management." 
-        },
-        { 
-            title: "Bidirectional Integration Support", 
-            description: "Enabled webhook communication in both directions between development tools (Make to Retool, Retool to n8n) with consistent monitoring and error handling across all paths." 
-        },
-        {
-            title: "Project-based Seperation",
-            description: "Allows for seperation of product-based webhooks or internal webhooks, each with seperate billing and throughput levels. Each project also has seperate integration and API capability."
-        }
-    ],
+        features: [
+            { 
+                title: "Unified Webhook Management", 
+                description: "Consolidated all webhook traffic from source applications through Hookdeck, providing complete visibility into delivery status, retry logic, and payload inspection for every event flowing through the system." 
+            },
+            { 
+                title: "Advanced Traffic Control", 
+                description: "Implemented custom routing rules, concurrency controls, payload transformations, and filtering logic to intelligently direct webhook events to appropriate destinations based on content, version, or business rules." 
+            },
+            { 
+                title: "Automated Partner Provisioning", 
+                description: "Built self-service workflow that automatically generates Hookdeck endpoints for partner agencies, allowing them to receive platform data without manual infrastructure setup or credential management." 
+            },
+            { 
+                title: "Bidirectional Integration Support", 
+                description: "Enabled webhook communication in both directions between development tools (Make to Retool, Retool to n8n) with consistent monitoring and error handling across all paths." 
+            },
+            {
+                title: "Project-based Separation",
+                description: "Allows for separation of product-based webhooks or internal webhooks, each with separate billing and throughput levels. Each project also has separate integration and API capability."
+            }
+        ],
     
-    highlights: [
-        "Centralized 100% of webhook infrastructure for platform events and inter-app communication",
-        "Established visible audit trail for all webhook deliveries with automatic retry and failure management",
-        "Created automated partner onboarding that provisions webhook endpoints without manual intervention",
-        "Implemented flexible routing system supporting multiple simultaneous destinations with custom transformation logic",
-        "Seperates product webhooks and internal webhooks while maintaining enterprise-grade control and access"
-    ],
+        highlights: [
+            "Centralized 100% of webhook infrastructure for platform events and inter-app communication",
+            "Established visible audit trail for all webhook deliveries with automatic retry and failure management",
+            "Created automated partner onboarding that provisions webhook endpoints without manual intervention",
+            "Implemented flexible routing system supporting multiple simultaneous destinations with custom transformation logic",
+            "Separates product webhooks and internal webhooks while maintaining enterprise-grade control and access"
+        ],
     
-    screenshots: [
-        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/hookdeck_implementation/hookdeck_event_dashboard.png", alt: "Hookdeck Event Dashboard", placeholder: "Hookdeck Event Dashboard" },
-        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/hookdeck_implementation/hookdeck_connections_page.png", alt: "Hookdeck Connection Management", placeholder: "Hookdeck Connection Management" }
+        screenshots: [
+            { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/hookdeck_implementation/hookdeck_event_dashboard.png", alt: "Hookdeck Event Dashboard", placeholder: "Hookdeck Event Dashboard" },
+            { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/hookdeck_implementation/hookdeck_connections_page.png", alt: "Hookdeck Connection Management", placeholder: "Hookdeck Connection Management" }
         ]
-    },
+    }
+];
 
-    // ============================================
-    // ADD NEW PROJECTS BELOW - Copy this template:
-    // ============================================
+// ============================================
+// ADD NEW PROJECTS BELOW - Copy this template:
+// ============================================
     /*
     {
     id: "project-slug",
@@ -299,14 +296,12 @@ const PROJECTS = [
         { url: "https://supabase-url.com/image.png", alt: "Description", placeholder: "Label" },
         { url: "", alt: "Description", placeholder: "Placeholder Label" }  // Empty URL shows placeholder
     ]
-},
+}
     */
-];
 
 // ============================================
 // DEFINED TAGS - Add new tags here as needed
 // ============================================
-// Each tag needs: id (lowercase, used in data-tags), label (display name), icon (favicon URL)
 
 const DEFINED_TAGS = {
     n8n: {
@@ -376,7 +371,5 @@ const DEFINED_TAGS = {
     webflow: {
         label: "Webflow",
         icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/webflow-logo.png"
-    },
-    // Add more tags as needed:
-    // tagid: { label: "Display Name", icon: "https://example.com/favicon.ico" },
+    }
 };
