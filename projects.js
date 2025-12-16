@@ -47,7 +47,7 @@ const PROJECTS = [
         title: "Make.com to n8n Migration & Cost Optimization",
         type: "Workflow Migration",
         date: "2025",
-        tags: ["n8n", "docker", "digitalocean"],
+        tags: ["make", "n8n", "docker", "digitalocean"],
         
         summary: "Migrated high-volume automation workflows from Make.com to self-hosted n8n, reducing monthly automation costs by over $1,500 while maintaining full functionality and enabling unlimited workflow expansion.",
         
@@ -133,7 +133,7 @@ const PROJECTS = [
         title: "Enterprise Hookdeck Infrastructure Implementation",
         type: "Integration Infrastructure",
         date: "2025",
-        tags: ["hookdeck", "fub", "make", "n8n", "retool"],
+        tags: ["hookdeck", "make", "n8n", "retool", "fub"],
         
         summary: "Centralized all webhook infrastructure through Hookdeck, establishing a visible, manageable pipeline for platform events and inter-application communications with advanced routing, transformation, and filtering capabilities that extended to partner agencies through automated provisioning.",
         
