@@ -11,10 +11,8 @@ const PROJECTS = [
         tags: ["supabase", "digitalocean"],
         summary: "A comprehensive API integration system enabling external partners to query their partner data in the VDT Homes database. Features secure token-based authentication, intelligent rate limiting, and professional API documentation.",
         
-        // Detailed content sections
         challenge: "The client needed a way for external partners to programmatically fetch their data while maintaining data integrity, security, and the ability to receive status updates. The solution needed to leverage the existing database and provide partners with a professional, well-documented API experience.",
         
-        // Architecture flow - each node in order
         architecture: [
             { label: "Partner", name: "API Request" },
             { label: "Gateway", name: "Supabase", highlight: true },
@@ -48,128 +46,150 @@ const PROJECTS = [
         ]
     },
     {
-    id: "make-to-n8n-migration",
-    title: "Make.com to n8n Migration & Cost Optimization",
-    type: "Workflow Migration",
-    date: "2025",
-    tags: ["n8n", "docker", "digitalocean"],
-    
-    summary: "Migrated high-volume automation workflows from Make.com to self-hosted n8n, reducing monthly automation costs by over $1,500 while maintaining full functionality and enabling unlimited workflow expansion.",
-    
-    challenge: "The company's most critical automation scenarios were consuming the majority of Make.com's monthly operation credits, creating an unsustainable cost structure that limited the ability to add new automations. With growing business needs requiring additional workflows, the existing platform's usage-based pricing model was becoming a bottleneck to scaling operations efficiently.",
-    
-    comparison: {
-        before: {
-            title: "Make.com",
-            points: [
-                "Usage-based pricing per operation",
-                "Limited to platform's available integrations",
-                "No direct coding ability outside of Enterprise plan"
-                "Vendor-controlled infrastructure"
-                ],
-            metrics: {
-                label: "Monthly Cost",
-                value: "$2,200/mo"
+        id: "make-to-n8n-migration",
+        title: "Make.com to n8n Migration & Cost Optimization",
+        type: "Workflow Migration",
+        date: "2025",
+        tags: ["n8n", "docker", "digitalocean"],
+        
+        summary: "Migrated high-volume automation workflows from Make.com to self-hosted n8n, reducing monthly automation costs by over $1,500 while maintaining full functionality and enabling unlimited workflow expansion.",
+        
+        challenge: "The company's most critical automation scenarios were consuming the majority of Make.com's monthly operation credits, creating an unsustainable cost structure that limited the ability to add new automations. With growing business needs requiring additional workflows, the existing platform's usage-based pricing model was becoming a bottleneck to scaling operations efficiently.",
+        
+        comparison: {
+            before: {
+                title: "Make.com",
+                points: [
+                    "Usage-based pricing per operation",
+                    "Limited to platform's available integrations",
+                    "No direct coding ability outside of Enterprise plan"
+                    "Vendor-controlled infrastructure"
+                    ],
+                metrics: {
+                    label: "Monthly Cost",
+                    value: "$2,200/mo"
+                    }
+                },
+            after: {
+                title: "n8n Self-Hosted",
+                points: [
+                    "Unlimited operations at fixed cost",
+                    "Full code access for custom integrations",
+                    "Fully available code nodes for both JS or Python",
+                    "Self-managed infrastructure with full control"
+                    ],
+                metrics: {
+                    label: "Monthly Cost",
+                    value: "$200/mo"
+                    }
+                },
+            savings: {
+                label: "Monthly Savings",
+                value: "$2000/mo",
+                percentage: "91%"
                 }
             },
-        after: {
-            title: "n8n Self-Hosted",
-            points: [
-                "Unlimited operations at fixed cost",
-                "Full code access for custom integrations",
-                "Fully available code nodes for both JS or Python",
-                "Self-managed infrastructure with full control"
-                ],
-            metrics: {
-                label: "Monthly Cost",
-                value: "$200/mo"
-                }
-            },
-        savings: {
-            label: "Monthly Savings",
-            value: "$2000/mo",
-            percentage: "91%"
+        
+        architecture: [
+            { label: "Infrastructure", name: "DigitalOcean Droplet" },
+            { label: "Container", name: "Docker Deployment" },
+            { label: "Automation", name: "n8n Self-Hosted", highlight: true },
+            {
+                label: "Active Workflows",
+                name: "Converted Scenarios",
+                branches: [
+                    { name: "Make Execution Tracking" },
+                    { name: "New Call Conversion Logic" }
+                    ]
             }
-        },
-    
-    architecture: [
-        { label: "Infrastructure", name: "DigitalOcean Droplet" },
-        { label: "Container", name: "Docker Deployment" },
-        { label: "Automation", name: "n8n Self-Hosted", highlight: true },
-        {
-            label: "Active Workflows",
-            name: "Converted Scenarios",
-            branches: [
-                { name: "Make Execution Tracking" },
-                { name: "New Call Conversion Logic" }
-                ]
-        }
-    ],
-    
-    features: [
-        { 
-            title: "Self-Hosted Infrastructure", 
-            description: "Deployed n8n on a DigitalOcean Droplet using Docker, providing full control over the automation environment with predictable fixed monthly costs instead of usage-based billing." 
-        },
-        { 
-            title: "High-Volume Workflow Migration", 
-            description: "Successfully converted the two most operation-intensive Make.com scenarios to n8n, maintaining all existing functionality while eliminating per-operation charges." 
-        },
-        { 
-            title: "Scalable Architecture", 
-            description: "Built a foundation that supports unlimited workflow additions without incremental cost increases, removing previous constraints on automation expansion." 
-        }
-    ],
-    
-    highlights: [
-        "Reduced monthly automation costs by over $1,500 (75%+ savings on infrastructure)",
-        "Maintained 100% functionality during migration with zero business disruption",
-        "Created scalable platform for unlimited future workflow expansion",
-        "Established Docker-based deployment for easy updates and maintenance"
         ],
-    
-    screenshots: [
-        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/bulk_data_sync_workflow.png", alt: "Make Execution Tracking", placeholder: "Make Execution Tracking" },
-        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/complex_webhook_workflow.png", alt: "New Call Conversion Logic", placeholder: "New Call Conversion Logic" }
-        ]
+        
+        features: [
+            { 
+                title: "Self-Hosted Infrastructure", 
+                description: "Deployed n8n on a DigitalOcean Droplet using Docker, providing full control over the automation environment with predictable fixed monthly costs instead of usage-based billing." 
+            },
+            { 
+                title: "High-Volume Workflow Migration", 
+                description: "Successfully converted the two most operation-intensive Make.com scenarios to n8n, maintaining all existing functionality while eliminating per-operation charges." 
+            },
+            { 
+                title: "Scalable Architecture", 
+                description: "Built a foundation that supports unlimited workflow additions without incremental cost increases, removing previous constraints on automation expansion." 
+            }
+        ],
+        
+        highlights: [
+            "Reduced monthly automation costs by over $1,500 (75%+ savings on infrastructure)",
+            "Maintained 100% functionality during migration with zero business disruption",
+            "Created scalable platform for unlimited future workflow expansion",
+            "Established Docker-based deployment for easy updates and maintenance"
+            ],
+        
+        screenshots: [
+            { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/bulk_data_sync_workflow.png", alt: "Make Execution Tracking", placeholder: "Make Execution Tracking" },
+            { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/vdt_homes_self_hosted_n8n/complex_webhook_workflow.png", alt: "New Call Conversion Logic", placeholder: "New Call Conversion Logic" }
+            ]
     },
     {
-    id: "hookdeck-webhook-implementation",
-    title: "Enterprise Hookdeck Infrastructure Implemetation",
-    type: "Integration Infrastructure",
-    date: "2025",
-    tags: ["hookdeck", "fub", "make", "n8n", "retool"],
+        id: "hookdeck-webhook-implementation",
+        title: "Enterprise Hookdeck Infrastructure Implemetation",
+        type: "Integration Infrastructure",
+        date: "2025",
+        tags: ["hookdeck", "fub", "make", "n8n", "retool"],
+        
+        summary: "Centralized all webhook infrastructure through Hookdeck, establishing a visible, manageable pipeline for platform events and inter-application communications with advanced routing, transformation, and filtering capabilities that extended to partner agencies through automated provisioning.",
+        
+        challenge: "The business's webhook infrastructure was fragmented and opaque, with direct connections between source applications and destinations making it impossible to debug failed deliveries, manage rate limits, or understand data flow. Without visibility into webhook traffic or the ability to transform payloads in transit, each integration required custom handling, and partner agencies had no standardized way to receive data from the platform, creating operational bottlenecks and integration complexity.",
     
-    summary: "Centralized all webhook infrastructure through Hookdeck, establishing a visible, manageable pipeline for platform events and inter-application communications with advanced routing, transformation, and filtering capabilities that extended to partner agencies through automated provisioning.",
-    
-    challenge: "The business's webhook infrastructure was fragmented and opaque, with direct connections between source applications and destinations making it impossible to debug failed deliveries, manage rate limits, or understand data flow. Without visibility into webhook traffic or the ability to transform payloads in transit, each integration required custom handling, and partner agencies had no standardized way to receive data from the platform, creating operational bottlenecks and integration complexity.",
-    
-    architecture: [
-    { label: "Sources", name: "Platform Events" },
-    { label: "Ingestion", name: "Hookdeck Endpoints" },
-    { 
-        label: "Processing", 
-        name: "Hookdeck Pipeline", 
-        highlight: true,
-        branches: [
-            { name: "Deduplication" },
-            { name: "Transformation" },
-            { name: "Filtering" },
-            { name: "Delay Logic" },
-            { name: "Retry Management" }
-        ]
-    },
-    { 
-        label: "Destinations", 
-        name: "Multi-Destination Routing",
-        branches: [
-            { name: "Make.com Workflows" },
-            { name: "n8n Automation" },
-            { name: "Retool Applications" },
-            { name: "Partner Agency Endpoints" }
-        ]
-    }
-],
+        comparison: {
+        type: "before-after",
+        before: {
+            title: "Before Hookdeck",
+            points: [
+                "Direct webhook connections with no visibility",
+                "Manual debugging of failed deliveries",
+                "No payload transformation capabilities",
+                "Partner agencies required custom integration work"
+                ]
+            },
+        after: {
+            title: "After Hookdeck",
+            points: [
+                "Centralized dashboard with full event visibility",
+                "Automatic retry and failure management",
+                "Built-in transformation and filtering",
+                "Self-service partner endpoint provisioning"
+                ]
+            }
+        },
+        
+        architecture: [
+        { label: "Sources", name: "Platform Events" },
+        { label: "Ingestion", name: "Hookdeck Endpoints" },
+        { 
+            label: "Processing", 
+            name: "Hookdeck Pipeline", 
+            highlight: true,
+            branches: [
+                { name: "Deduplication" },
+                { name: "Transformation" },
+                { name: "Filtering" },
+                { name: "Delay Logic" },
+                { name: "Retry Management" }
+                ]
+            },
+            { 
+            label: "Destinations", 
+            name: "Multi-Destination Routing",
+            branches: [
+                { name: "Make.com Workflows" },
+                { name: "n8n Automation" },
+                { name: "Retool Applications" },
+                { name: "Partner Agency Endpoints" }
+                ]
+            }
+        ],
     
     features: [
         { 
@@ -205,8 +225,8 @@ const PROJECTS = [
     screenshots: [
         { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/hookdeck_implementation/hookdeck_event_dashboard.png", alt: "Hookdeck Event Dashboard", placeholder: "Hookdeck Event Dashboard" },
         { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/hookdeck_implementation/hookdeck_connections_page.png", alt: "Hookdeck Connection Management", placeholder: "Hookdeck Connection Management" }
-    ]
-},
+        ]
+    },
 
     // ============================================
     // ADD NEW PROJECTS BELOW - Copy this template:
@@ -219,7 +239,8 @@ const PROJECTS = [
     date: "2025",
     tags: ["n8n", "supabase"],  // Must match keys in DEFINED_TAGS
     summary: "Brief 1-2 sentence description.",
-    
+
+    // Detailed content sections
     challenge: "Describe the problem or challenge this project solved.",
     
     // Optional - for migrations/upgrades/comparisons
