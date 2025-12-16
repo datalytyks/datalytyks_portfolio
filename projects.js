@@ -58,6 +58,40 @@ const PROJECTS = [
     
     challenge: "The company's most critical automation scenarios were consuming the majority of Make.com's monthly operation credits, creating an unsustainable cost structure that limited the ability to add new automations. With growing business needs requiring additional workflows, the existing platform's usage-based pricing model was becoming a bottleneck to scaling operations efficiently.",
     
+    comparison: {
+        before: {
+            title: "Make.com",
+            points: [
+                "Usage-based pricing per operation",
+                "Limited to platform's available integrations",
+                "No direct coding ability outside of Enterprise plan"
+                "Vendor-controlled infrastructure"
+            ],
+            metrics: {
+                label: "Monthly Cost",
+                value: "$2,200/mo"
+            }
+        },
+        after: {
+            title: "n8n Self-Hosted",
+            points: [
+                "Unlimited operations at fixed cost",
+                "Full code access for custom integrations",
+                "Fully available code nodes for both JS or Python",
+                "Self-managed infrastructure with full control"
+            ],
+            metrics: {
+                label: "Monthly Cost",
+                value: "$200/mo"
+            }
+        },
+        savings: {
+            label: "Monthly Savings",
+            value: "$2000/mo",
+            percentage: "91%"
+        }
+    }
+    
     architecture: [
         { label: "Infrastructure", name: "DigitalOcean Droplet" },
         { label: "Container", name: "Docker Deployment" },
@@ -176,44 +210,72 @@ const PROJECTS = [
     // ============================================
     /*
     {
-        id: "project-slug",
-        title: "Project Title",
-        type: "Project Type", // e.g., "Workflow Automation", "Internal Tool", "Data Pipeline", "Integration System"
-        date: "2025",
-        tags: ["n8n", "supabase"], // use defined tags from DEFINED_TAGS below
-        summary: "Brief 1-2 sentence description of the project.",
-        
-        challenge: "Describe the problem or challenge this project solved.",
-        
-        architecture: [
-            { label: "Step 1", name: "Component" },
-            { label: "Step 2", name: "Component", highlight: true },
-            { label: "Step 3", name: "Component" },
-            {
-            label: "Branch",
-            name: "Branch Name",
-            branches: [
-        { name: "Branch 1" },
-        { name: "Branch 2" }
-                ]
+    id: "project-slug",
+    title: "Project Title",
+    type: "Project Type",  // e.g., "Workflow Automation", "Platform Migration", "Integration System"
+    date: "2025",
+    tags: ["n8n", "supabase"],  // Must match keys in DEFINED_TAGS
+    summary: "Brief 1-2 sentence description.",
+    
+    challenge: "Describe the problem or challenge this project solved.",
+    
+    // Optional - for migrations/upgrades/comparisons
+    comparison: {
+        before: {
+            title: "Before State",
+            points: [
+                "Pain point 1",
+                "Pain point 2"
+            ],
+            metrics: {  // Optional
+                label: "Monthly Cost",
+                value: "$299/mo"
+            }
+        },
+        after: {
+            title: "After State",
+            points: [
+                "Improvement 1",
+                "Improvement 2"
+            ],
+            metrics: {  // Optional
+                label: "Monthly Cost",
+                value: "$48/mo"
+            }
+        },
+        savings: {  // Optional
+            label: "Monthly Savings",
+            value: "$251/mo",
+            percentage: "84%"
         }
-        ],
-        
-        features: [
-            { title: "Feature Name", description: "What this feature does" },
-            { title: "Feature Name", description: "What this feature does" }
-        ],
-        
-        highlights: [
-            "Technical detail or accomplishment",
-            "Another technical highlight"
-        ],
-        
-        screenshots: [
-            { url: "https://your-supabase-url.com/image.png", alt: "Description", placeholder: "Label" },
-            { url: "", alt: "Description", placeholder: "Coming Soon!" } // empty url shows placeholder
-        ]
     },
+    
+    // Optional - shows flow diagram
+    architecture: [
+        { label: "Step 1", name: "Component" },
+        { label: "Step 2", name: "Component", highlight: true },
+        { label: "Step 3", name: "Component", branches: [
+            { name: "Branch 1" },
+            { name: "Branch 2" }
+        ]}
+    ],
+    
+    // Optional - key features list
+    features: [
+        { title: "Feature Name", description: "What this feature does" }
+    ],
+    
+    // Optional - technical highlights
+    highlights: [
+        "Technical detail or accomplishment"
+    ],
+    
+    // Optional - screenshot gallery
+    screenshots: [
+        { url: "https://supabase-url.com/image.png", alt: "Description", placeholder: "Label" },
+        { url: "", alt: "Description", placeholder: "Placeholder Label" }  // Empty URL shows placeholder
+    ]
+},
     */
 ];
 
