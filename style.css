@@ -362,7 +362,7 @@ header {
 }
 
 .project-card.expanded .project-details {
-    max-height: 3000px;
+    max-height: 5000px;
 }
 
 .project-details-inner {
@@ -661,6 +661,43 @@ header {
     border-radius: 20px;
 }
 
+/* n8n Workflows Section */
+.workflows-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.workflow-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.workflow-title {
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card);
+}
+
+.workflow-viewer {
+    width: 100%;
+    height: 400px;
+    background: #f5f5f5;
+    position: relative;
+}
+
+.workflow-viewer n8n-demo {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 /* Screenshots Gallery */
 .screenshots-gallery {
     display: grid;
@@ -868,5 +905,9 @@ footer {
     .savings-value {
         flex-direction: column;
         gap: 8px;
+    }
+
+    .workflow-viewer {
+        height: 300px;
     }
 }
