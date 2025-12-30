@@ -7,8 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=8">
     <link rel="icon" type="image/png" href="https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/business_branding/datalytyks/datalytyks%20Logo%20Updated%20(Medium).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJidXNpbmVzc19icmFuZGluZy9kYXRhbHl0eWtzL2RhdGFseXR5a3MgTG9nbyBVcGRhdGVkIChNZWRpdW0pLnBuZyIsImlhdCI6MTc2NTQ3MjQxNywiZXhwIjoxNzk3MDA4NDE3fQ.1W_Wo1H3dp-_Wxi-cDd-2cIphTvHF4bmEWiGg0dQW5A">
+    
+    <!-- n8n Demo Component Scripts (for workflow visualization) -->
+    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
+    <script src="https://unpkg.com/lit@2.0.0-rc.2/polyfill-support.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@n8n_io/n8n-demo-component/n8n-demo.bundled.js"></script>
+    
     <!-- Critical inline styles for theme toggle (backup) -->
     <style>
         .theme-toggle {
@@ -262,6 +268,23 @@
             screenshotsHtml = '<div class="detail-section"><h4>Screenshots</h4><div class="screenshots-gallery">' + screenshotItems + '</div></div>';
         }
 
+        // n8n Workflows section
+        var workflowsHtml = '';
+        if (project.workflows && project.workflows.length > 0) {
+            var workflowItems = project.workflows.map(function(w, index) {
+                var workflowId = project.id + '-workflow-' + index;
+                // Escape the workflow JSON for HTML attribute
+                var escapedWorkflow = w.data.replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+                return '<div class="workflow-item">' +
+                    '<div class="workflow-title">' + w.title + '</div>' +
+                    '<div class="workflow-viewer">' +
+                        '<n8n-demo id="' + workflowId + '" workflow="' + escapedWorkflow + '"></n8n-demo>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+            workflowsHtml = '<div class="detail-section"><h4>n8n Workflows</h4><div class="workflows-gallery">' + workflowItems + '</div></div>';
+        }
+
         var comparisonHtml = '';
         if (project.comparison) {
             var comp = project.comparison;
@@ -336,6 +359,7 @@
                     architectureHtml +
                     featuresHtml +
                     highlightsHtml +
+                    workflowsHtml +
                     screenshotsHtml +
                 '</div>' +
             '</div>' +
