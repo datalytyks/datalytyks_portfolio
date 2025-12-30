@@ -1,4 +1,161 @@
 // ============================================
+// DEFINED TAGS - Add new tags here as needed
+// ============================================
+
+const DEFINED_TAGS = {
+    n8n: {
+        label: "n8n",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/n8n-logo-v2.png"
+    },
+    supabase: {
+        label: "Supabase",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/supabase-logo-icon.png"
+    },
+    hookdeck: {
+        label: "HookDeck",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/hookdeck-logo-v2.png"
+    },
+    digitalocean: {
+        label: "DigitalOcean",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/digitalocean-logo.png"
+    },
+    docker: {
+        label: "Docker",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/docker-logo.png"
+    },
+    retool: {
+        label: "Retool",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/retool-logo-v2.png"
+    },
+    make: {
+        label: "Make",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/Make-App-Icon-Circle.png"
+    },
+    github: {
+        label: "GitHub",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/github-logo.png"
+    },
+    metabase: {
+        label: "Metabase",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/metabase-logo.png"
+    },
+    postman: {
+        label: "Postman",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/postman-logo.png"
+    },
+    fub: {
+        label: "Follow Up Boss",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/fub-logo.png"
+    },
+    monday: {
+        label: "Monday.com",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/monday-logo.png"
+    },
+    postgresql: {
+        label: "PostgreSQL",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/postgresql-logo.png"
+    },
+    bigquery: {
+        label: "BigQuery",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/bigquery-logo.jpg"
+    },
+    zapier: {
+        label: "Zapier",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/zapier-logo.png"
+    },
+    airtable: {
+        label: "Airtable",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/airtable-logo.png"
+    },
+    webflow: {
+        label: "Webflow",
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/webflow-logo.png"
+    }
+};
+
+// ============================================
+// ADD NEW PROJECTS BELOW - Copy this template:
+// ============================================
+    /*
+    {
+    id: "project-slug",
+    title: "Project Title",
+    type: "Project Type",  // e.g., "Workflow Automation", "Platform Migration", "Integration System"
+    date: "2025",
+    tags: ["n8n", "supabase"],  // Must match keys in DEFINED_TAGS
+    summary: "Brief 1-2 sentence description.",
+
+    // Detailed content sections
+    challenge: "Describe the problem or challenge this project solved.",
+    
+    // Optional - for migrations/upgrades/comparisons
+    comparison: {
+        before: {
+            title: "Before State",
+            points: [
+                "Pain point 1",
+                "Pain point 2"
+            ],
+            metrics: {  // Optional
+                label: "Monthly Cost",
+                value: "$299/mo"
+            }
+        },
+        after: {
+            title: "After State",
+            points: [
+                "Improvement 1",
+                "Improvement 2"
+            ],
+            metrics: {  // Optional
+                label: "Monthly Cost",
+                value: "$48/mo"
+            }
+        },
+        savings: {  // Optional
+            label: "Monthly Savings",
+            value: "$251/mo",
+            percentage: "84%"
+        }
+    },
+    
+    // Optional - shows flow diagram
+    architecture: [
+        { label: "Step 1", name: "Component" },
+        { label: "Step 2", name: "Component", highlight: true },
+        { label: "Step 3", name: "Component", branches: [
+            { name: "Branch 1" },
+            { name: "Branch 2" }
+        ]}
+    ],
+    
+    // Optional - key features list
+    features: [
+        { title: "Feature Name", description: "What this feature does" }
+    ],
+    
+    // Optional - technical highlights
+    highlights: [
+        "Technical detail or accomplishment"
+    ],
+
+    //Optional - n8n workflow renders
+    "workflows":[
+    {
+      "title": "Daily Automation Workflow",
+      "data": { "nodes": [...], "connections": {...} }
+    }
+    ],
+    
+    // Optional - screenshot gallery
+    screenshots: [
+        { url: "https://supabase-url.com/image.png", alt: "Description", placeholder: "Label" },
+        { url: "", alt: "Description", placeholder: "Placeholder Label" }  // Empty URL shows placeholder
+    ]
+}
+    */
+
+// ============================================
 // PROJECTS DATA - Edit this file to add/modify projects
 // ============================================
 
@@ -224,152 +381,3 @@ const PROJECTS = [
         ]
     }
 ];
-
-// ============================================
-// ADD NEW PROJECTS BELOW - Copy this template:
-// ============================================
-    /*
-    {
-    id: "project-slug",
-    title: "Project Title",
-    type: "Project Type",  // e.g., "Workflow Automation", "Platform Migration", "Integration System"
-    date: "2025",
-    tags: ["n8n", "supabase"],  // Must match keys in DEFINED_TAGS
-    summary: "Brief 1-2 sentence description.",
-
-    // Detailed content sections
-    challenge: "Describe the problem or challenge this project solved.",
-    
-    // Optional - for migrations/upgrades/comparisons
-    comparison: {
-        before: {
-            title: "Before State",
-            points: [
-                "Pain point 1",
-                "Pain point 2"
-            ],
-            metrics: {  // Optional
-                label: "Monthly Cost",
-                value: "$299/mo"
-            }
-        },
-        after: {
-            title: "After State",
-            points: [
-                "Improvement 1",
-                "Improvement 2"
-            ],
-            metrics: {  // Optional
-                label: "Monthly Cost",
-                value: "$48/mo"
-            }
-        },
-        savings: {  // Optional
-            label: "Monthly Savings",
-            value: "$251/mo",
-            percentage: "84%"
-        }
-    },
-    
-    // Optional - shows flow diagram
-    architecture: [
-        { label: "Step 1", name: "Component" },
-        { label: "Step 2", name: "Component", highlight: true },
-        { label: "Step 3", name: "Component", branches: [
-            { name: "Branch 1" },
-            { name: "Branch 2" }
-        ]}
-    ],
-    
-    // Optional - key features list
-    features: [
-        { title: "Feature Name", description: "What this feature does" }
-    ],
-    
-    // Optional - technical highlights
-    highlights: [
-        "Technical detail or accomplishment"
-    ],
-    
-    // Optional - screenshot gallery
-    screenshots: [
-        { url: "https://supabase-url.com/image.png", alt: "Description", placeholder: "Label" },
-        { url: "", alt: "Description", placeholder: "Placeholder Label" }  // Empty URL shows placeholder
-    ]
-}
-    */
-
-// ============================================
-// DEFINED TAGS - Add new tags here as needed
-// ============================================
-
-const DEFINED_TAGS = {
-    n8n: {
-        label: "n8n",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/n8n-logo-v2.png"
-    },
-    supabase: {
-        label: "Supabase",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/supabase-logo-icon.png"
-    },
-    hookdeck: {
-        label: "HookDeck",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/hookdeck-logo-v2.png"
-    },
-    digitalocean: {
-        label: "DigitalOcean",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/digitalocean-logo.png"
-    },
-    docker: {
-        label: "Docker",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/docker-logo.png"
-    },
-    retool: {
-        label: "Retool",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/retool-logo-v2.png"
-    },
-    make: {
-        label: "Make",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/Make-App-Icon-Circle.png"
-    },
-    github: {
-        label: "GitHub",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/github-logo.png"
-    },
-    metabase: {
-        label: "Metabase",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/metabase-logo.png"
-    },
-    postman: {
-        label: "Postman",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/postman-logo.png"
-    },
-    fub: {
-        label: "Follow Up Boss",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/fub-logo.png"
-    },
-    monday: {
-        label: "Monday.com",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/monday-logo.png"
-    },
-    postgresql: {
-        label: "PostgreSQL",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/postgresql-logo.png"
-    },
-    bigquery: {
-        label: "BigQuery",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/bigquery-logo.jpg"
-    },
-    zapier: {
-        label: "Zapier",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/zapier-logo.png"
-    },
-    airtable: {
-        label: "Airtable",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/airtable-logo.png"
-    },
-    webflow: {
-        label: "Webflow",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/webflow-logo.png"
-    }
-};
