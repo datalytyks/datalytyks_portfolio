@@ -687,7 +687,7 @@ header {
 
 .workflow-viewer {
     width: 100%;
-    height: 400px;
+    height: 600px;
     background: #f5f5f5;
     position: relative;
 }
@@ -696,6 +696,70 @@ header {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+/* Collapsible Sections */
+.collapsible-section {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 16px;
+}
+
+.collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.collapsible-header:hover {
+    background: var(--bg-card-hover);
+}
+
+.collapsible-header h4 {
+    margin: 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+
+.collapsible-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.collapsible-toggle svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-section.collapsed .collapsible-toggle svg {
+    transform: rotate(-90deg);
+}
+
+.collapsible-content {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.collapsible-section.collapsed .collapsible-content {
+    max-height: 0;
+}
+
+.collapsible-inner {
+    padding: 20px;
+    background: var(--bg-secondary);
 }
 
 /* Screenshots Gallery */
@@ -908,6 +972,10 @@ footer {
     }
 
     .workflow-viewer {
-        height: 300px;
+        height: 400px;
+    }
+
+    .collapsible-inner {
+        padding: 16px;
     }
 }
