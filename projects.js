@@ -160,6 +160,55 @@ const DEFINED_TAGS = {
 // ============================================
 
 const PROJECTS = [
+    
+
+{
+    id: "test-title",
+    title: "Test title",
+    type: "Platform Migration",
+    date: "2025",
+    tags: ["supabase", "hookdeck", "digitalocean", "make", "github", "fub", "monday", "zapier"],
+    
+    summary: "Test",
+    
+    challenge: "Test challenge",
+    
+    comparison: {
+        before: {
+            title: "Test title",
+            points: ["Before test"],
+            metrics: { label: "Monthly Cost", value: "$5,666/mo" }
+        },
+        after: {
+            title: "Test",
+            points: ["After test"],
+            metrics: { label: "Monthly Cost", value: "$56/mo" }
+        },
+        savings: { label: "Monthly Savings", value: "$5,610/mo", percentage: "1000%" }
+    },
+    
+    architecture: [
+        { label: "Source", name: "Legacy Platform" },
+        { label: "Migration", name: "Platform Migration Tools", highlight: true },
+        { label: "Destination", name: "New Platform" }
+    ],
+    
+    features: [
+        { title: "Test", description: "Test" },
+        { title: "Test", description: "Test" }
+    ],
+    
+    highlights: [
+        "TEst",
+        "test",
+        "test"
+    ],
+    
+    screenshots: [
+        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/test-title/screenshot-1-1767205772481.png", alt: "_C__Users_grbut_OneDrive_Desktop_test.html(Desktop).png", placeholder: "_C__Users_grbut_OneDrive_Desktop_test.html(Desktop).png" },
+        { url: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/test-title/screenshot-2-1767205773037.png", alt: "_C__Users_grbut_OneDrive_Desktop_test2.html(Desktop).png", placeholder: "_C__Users_grbut_OneDrive_Desktop_test2.html(Desktop).png" }
+    ]
+},
     {
         id: "vdt-partner-api",
         title: "Real Estate Partner API System",
