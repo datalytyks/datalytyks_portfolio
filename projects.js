@@ -160,6 +160,38 @@ const DEFINED_TAGS = {
 // ============================================
 
 const PROJECTS = [
+    
+
+{
+    id: "test-title",
+    title: "Test title",
+    type: "Platform Migration",
+    date: "2025",
+    tags: ["supabase", "hookdeck", "digitalocean", "make", "github", "fub", "monday", "zapier"],
+    
+    summary: "Test",
+    
+    challenge: "Test challenge",
+    
+    comparison: {
+        before: { title: "Test title", points: ["Before test"], metrics: { label: "Monthly Cost", value: "$5,666/mo" } },
+        after: { title: "Test", points: ["After test"], metrics: { label: "Monthly Cost", value: "$56/mo" } },
+        savings: { label: "Monthly Savings", value: "$5,610/mo", percentage: "1000%" }
+    },
+    
+    architecture: "Test",
+    
+    features: [
+        { title: "Test", description: "Test" },
+        { title: "Test", description: "Test" }
+    ],
+    
+    highlights: ["TEst", "test", "test"],
+    
+    workflows: [
+        {
+            title: "test",
+            data: '{"nodes":[{"parameters":{"rule":{"interval":[{"field":"hours","hoursInterval":4}]}},"id":"018117e6-6bab-44d6-9a3b-544bbd58daf8","name":"Schedule Trigger","type":"n8n-nodes-base.scheduleTrigger","typeVersion":1,"position":[-640,224]},{"parameters":{"url":"https://us1.make.com/api/v2/scenarios","authentication":"genericCredentialType","genericAuthType":"httpHeaderAuth","sendQuery":true,"queryParameters":{"parameters":[{"name":"organizationId","value":"379071"},{"name":"pg[limit]","value":"1000"},{"name":"cols[1]","value":"id"},{"name":"cols[2]","value":"name"},{"name":"cols[3]","value":"islinked"},{"name":"cols[4]","value":"folderId"}]},"options":{"timeout":90000}},"id":"85179e7d-c290-483c-8cda-da633c9c1d42","name":"Get All Make Scenarios","type":"n8n-nodes-base.httpRequest","typeVersion":4.1,"position":[-416,304],"credentials":{"httpHeaderAuth":{"id":"uQgkiSJSlPU2JgQG","name":"Make - Girmonde Team - API Key (11/13/2024)"}}},{"parameters":{},"id":"2058d394-0953-4235-8bfc-cb7a4ff73ea7","name":"When clicking \"Execute Workflow\"","type":"n8n-nodes-base.manualTrigger","typeVersion":1,"position":[-640,384],"disabled":true},{"parameters":{"fieldToSplitOut":"scenarios","options":{}},"id":"f369d62f-7b4e-4b12-a197-36a24c587e6d","name":"List all scenarios","type":"n8n-nodes-base.itemLists","typeVersion":2.1,"position":[-240,304]},{"parameters":{"conditions":{"options":{"caseSensitive":true,"leftValue":"","typeValidation":"strict","version":1},"conditions":[{"id":"f8add357-1d47-49d9-a213-4b549fad8a9e","leftValue":"={{ $json.body.scenarioLogs }}","rightValue":0,"operator":{"type":"array","operation":"lengthEquals","rightType":"number"}}],"combinator":"and"},"options":{}},"id":"ce03e609-990a-45d1-ae39-e32b5d6a1ab9","name":"No more results?","type":"n8n-nodes-base.if","typeVersion":2,"position":[1744,928]},{"parameters":{"jsCode":"let results = [],\n  i = 0;\n\n// Add first message\nconsole.log($(\"Get initial page\").all(0, 0));\nresults = results.concat($(\"Get each next page\").all(0, ,
     {
         id: "vdt-partner-api",
         title: "Real Estate Partner API System",
