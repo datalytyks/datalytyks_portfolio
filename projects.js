@@ -160,6 +160,7 @@ const DEFINED_TAGS = {
 // ============================================
 
 const PROJECTS = [
+    undefined,
     {
         id: "vdt-partner-api",
         title: "Real Estate Partner API System",
