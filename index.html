@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=8">
-    <link rel="icon" type="image/png" href="https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/business_branding/datalytyks/logo_medium.png">
+    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="icon" type="image/png" href="https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/sign/business_branding/datalytyks/datalytyks%20Logo%20Updated%20(Medium).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MTc5NzllMS0yNTFlLTRkMmUtOWVmMy04MTE1YTFjM2JkNmQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJidXNpbmVzc19icmFuZGluZy9kYXRhbHl0eWtzL2RhdGFseXR5a3MgTG9nbyBVcGRhdGVkIChNZWRpdW0pLnBuZyIsImlhdCI6MTc2NTQ3MjQxNywiZXhwIjoxNzk3MDA4NDE3fQ.1W_Wo1H3dp-_Wxi-cDd-2cIphTvHF4bmEWiGg0dQW5A">
     
     <!-- n8n Demo Component Scripts (for workflow visualization) -->
     <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
@@ -265,7 +265,13 @@
                     : '<div class="screenshot-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>' + s.placeholder + '</span></div>';
                 return '<div class="screenshot-item" onclick="openLightbox(this)">' + content + '</div>';
             }).join('');
-            screenshotsHtml = '<div class="detail-section"><h4>Screenshots</h4><div class="screenshots-gallery">' + screenshotItems + '</div></div>';
+            screenshotsHtml = '<div class="detail-section collapsible-section" onclick="toggleCollapsible(event, this)">' +
+                '<div class="collapsible-header">' +
+                    '<h4>Screenshots (' + project.screenshots.length + ')</h4>' +
+                    '<div class="collapsible-toggle"><span>Collapse</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>' +
+                '</div>' +
+                '<div class="collapsible-content"><div class="collapsible-inner"><div class="screenshots-gallery">' + screenshotItems + '</div></div></div>' +
+            '</div>';
         }
 
         // n8n Workflows section
@@ -282,7 +288,13 @@
                     '</div>' +
                 '</div>';
             }).join('');
-            workflowsHtml = '<div class="detail-section"><h4>n8n Workflows</h4><div class="workflows-gallery">' + workflowItems + '</div></div>';
+            workflowsHtml = '<div class="detail-section collapsible-section" onclick="toggleCollapsible(event, this)">' +
+                '<div class="collapsible-header">' +
+                    '<h4>n8n Workflows (' + project.workflows.length + ')</h4>' +
+                    '<div class="collapsible-toggle"><span>Collapse</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>' +
+                '</div>' +
+                '<div class="collapsible-content"><div class="collapsible-inner"><div class="workflows-gallery">' + workflowItems + '</div></div></div>' +
+            '</div>';
         }
 
         var comparisonHtml = '';
@@ -381,6 +393,20 @@
         // Update indicator text
         var indicator = card.querySelector('.expand-indicator span');
         indicator.textContent = card.classList.contains('expanded') ? 'Hide Details' : 'View Details';
+    }
+
+    function toggleCollapsible(event, element) {
+        // Don't toggle if clicking on screenshot items (for lightbox)
+        if (event.target.closest('.screenshot-item')) return;
+        
+        // Only toggle if clicking the header
+        if (!event.target.closest('.collapsible-header')) return;
+        
+        element.classList.toggle('collapsed');
+        
+        // Update toggle text
+        var toggleText = element.querySelector('.collapsible-toggle span');
+        toggleText.textContent = element.classList.contains('collapsed') ? 'Expand' : 'Collapse';
     }
 
     function setupFilterListeners() {
