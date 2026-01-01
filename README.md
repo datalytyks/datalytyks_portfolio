@@ -10,11 +10,29 @@ A personal portfolio site for showcasing low-code/no-code solution development p
 
 ```
 /
-├── index.html      # Main page structure + inline JavaScript
-├── style.css       # All styling (including dark/light themes)
-├── projects.js     # Project data + tool/tag definitions
-└── README.md       # This file
+├── index.html                  # Main page structure + inline JavaScript
+├── style.css                   # All styling (including dark/light themes)
+├── projects.js                 # Project data + tool/tag definitions
+├── project-intake-form.html    # Project submission form with live preview
+└── README.md                   # This file
 ```
+
+---
+
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| **Filter by Technology** | Click tag buttons to filter projects |
+| **Expandable Project Cards** | Click "View Details" to reveal full details |
+| **Dark/Light Mode Toggle** | Top-right corner button, preference saved |
+| **Architecture Diagrams** | Visual flow with optional branching |
+| **Before/After Comparisons** | Side-by-side with optional cost metrics |
+| **Savings Banner** | Highlight cost savings with percentage badge |
+| **n8n Workflow Embeds** | Interactive workflow visualizations (collapsible) |
+| **Screenshot Gallery** | Click to view full size (collapsible) |
+| **Responsive Design** | Works on mobile and desktop |
+| **Project Intake Form** | Live preview + automated submission pipeline |
 
 ---
 
@@ -22,13 +40,28 @@ A personal portfolio site for showcasing low-code/no-code solution development p
 
 ### Adding a New Project
 
+#### Option 1: Using the Intake Form (Recommended)
+
+1. Open `project-intake-form.html` locally in your browser
+2. Fill out the project details
+3. Click **👁 Preview** to see how it will look
+4. Click **🔄 Refresh Preview** after making changes
+5. When satisfied, click **Submit to GitHub** to create a PR
+
+The form integrates with an n8n workflow that:
+- Uploads screenshots to Supabase Storage
+- Generates polished content via Claude AI
+- Creates a GitHub Pull Request automatically
+
+#### Option 2: Manual Entry
+
 Edit `projects.js` and add a new object to the `PROJECTS` array:
 
 ```javascript
 {
     id: "project-slug",                    // Unique identifier (lowercase, hyphens)
     title: "Project Title",
-    type: "Integration System",            // e.g., "Workflow Automation", "Platform Migration", "Integration Infrastructure"
+    type: "Integration System",            // e.g., "Workflow Automation", "Platform Migration"
     date: "2025",
     tags: ["n8n", "supabase"],             // Must match keys in DEFINED_TAGS
     summary: "Brief 1-2 sentence description.",
@@ -90,10 +123,17 @@ Edit `projects.js` and add a new object to the `PROJECTS` array:
         "Technical detail or accomplishment"
     ],
     
-    // Optional - screenshot gallery
+    // Optional - screenshot gallery (collapsible)
     screenshots: [
-        { url: "https://supabase-url.com/image.png", alt: "Description", placeholder: "Label" },
-        { url: "", alt: "Description", placeholder: "Placeholder Label" }  // Empty URL shows placeholder
+        { url: "https://supabase-url.com/image.png", alt: "Description", placeholder: "Label" }
+    ],
+    
+    // Optional - n8n workflow embeds (collapsible)
+    workflows: [
+        {
+            title: "Workflow Name",
+            data: "{\"nodes\":[...],\"connections\":{...}}"  // Escaped JSON string
+        }
     ]
 }
 ```
@@ -106,7 +146,42 @@ Sections display in this order (if present):
 3. Solution Architecture
 4. Key Features Built
 5. Technical Highlights
-6. Screenshots
+6. n8n Workflows (collapsible)
+7. Screenshots (collapsible)
+
+### Adding n8n Workflow Embeds
+
+#### Using the Intake Form (Recommended)
+
+1. Export your workflow from n8n (Download as JSON)
+2. Upload the JSON file in the "n8n Workflows" section of the intake form
+3. Add a title for each workflow
+4. The form will trim it to just `nodes` and `connections` and handle escaping
+
+#### Using the Export Tool
+
+If adding workflows to an existing project:
+
+1. Open `project-intake-form.html`
+2. Upload your workflow JSON file(s)
+3. Add titles (one per line)
+4. Click **📋 Export Workflows Only**
+5. Copy the output and paste into your project in `projects.js`
+
+#### Manual Entry
+
+The workflow data must be a properly escaped JSON string containing only `nodes` and `connections`:
+
+```javascript
+workflows: [
+    {
+        title: "My Workflow",
+        data: "{\"nodes\":[{\"parameters\":{...}}],\"connections\":{...}}"
+    }
+]
+```
+
+**Important:** Use `JSON.stringify()` to properly escape the workflow data, or use the Export tool in the intake form.
 
 ### Adding a New Tool/Tag
 
@@ -130,6 +205,45 @@ const DEFINED_TAGS = {
 
 ---
 
+## Project Intake Form
+
+The intake form (`project-intake-form.html`) provides a streamlined way to add new projects.
+
+### Features
+
+| Feature | Description |
+|---------|-------------|
+| **Live Preview** | See exactly how your project will look before submitting |
+| **Refresh Preview** | Update preview after making changes |
+| **Workflow Preview** | Interactive n8n workflow visualization |
+| **Screenshot Preview** | See uploaded images in the preview |
+| **Export Workflows** | Generate workflow code for existing projects |
+| **Dark/Light Theme** | Matches portfolio site styling |
+
+### Buttons
+
+| Button | Action |
+|--------|--------|
+| **👁 Preview** | Render project card locally |
+| **🔄 Refresh Preview** | Re-render with updated form data |
+| **📋 Export Workflows Only** | Output workflow array code for copy/paste |
+| **Submit to GitHub** | Send to n8n webhook → full automation pipeline |
+
+### n8n Automation Pipeline
+
+When you click "Submit to GitHub", the form sends data to an n8n webhook that:
+
+1. **Uploads Screenshots** → Supabase Storage (`portfolio_projects` bucket)
+2. **Trims Workflows** → Extracts only `nodes` and `connections`
+3. **Generates Content** → Claude AI enhances summary, challenge, architecture
+4. **Merges Workflows** → Adds properly escaped workflow data
+5. **Creates PR** → New branch + commit + Pull Request on GitHub
+6. **Returns Link** → PR URL displayed in form
+
+After merging the PR, DigitalOcean auto-deploys the updated site.
+
+---
+
 ## Cache Busting
 
 ### For projects.js (Automatic)
@@ -139,22 +253,16 @@ The site automatically adds a timestamp to `projects.js` requests, so changes ap
 DigitalOcean caches CSS files. When you update `style.css`, bump the version number in `index.html`:
 
 ```html
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=10">
 ```
 
-Increment the number (v=7 → v=8, etc.) each time you modify the CSS.
+Increment the number each time you modify the CSS.
 
 ---
 
 ## Theming
 
 The site supports dark and light modes via CSS variables. Users can toggle with the button in the top-right corner. Preference is saved to localStorage.
-
-### Dark Theme (Default)
-Defined in `:root` in `style.css`
-
-### Light Theme
-Defined in `[data-theme="light"]` in `style.css`
 
 ### Key CSS Variables
 
@@ -191,15 +299,10 @@ https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos
 
 **URL Pattern:**
 ```
-https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/[project_folder]/[filename].png
+https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_projects/[project-slug]/[filename].png
 ```
 
-### Uploading New Images
-
-1. Go to Supabase Dashboard → Storage → select bucket
-2. Upload file (recommended: PNG with transparent background for icons)
-3. Copy the public URL
-4. Add to `DEFINED_TAGS` or project `screenshots` array in `projects.js`
+Screenshots are automatically uploaded to project-specific folders when using the intake form.
 
 ---
 
@@ -207,7 +310,13 @@ https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/portfolio_proj
 
 The site auto-deploys from GitHub to DigitalOcean App Platform.
 
-### To Deploy Changes
+### Automated Workflow
+
+```
+Intake Form → n8n Webhook → Supabase + Claude + GitHub PR → Merge → Auto-Deploy
+```
+
+### Manual Deploy
 
 1. Commit and push to GitHub
 2. DO App Platform auto-builds and deploys
@@ -222,21 +331,6 @@ If caching issues persist:
 
 ---
 
-## Features
-
-| Feature | Description |
-|---------|-------------|
-| **Filter by Technology** | Click tag buttons to filter projects |
-| **Expandable Project Cards** | Click "View Details" to reveal full details |
-| **Dark/Light Mode Toggle** | Top-right corner button, preference saved |
-| **Architecture Diagrams** | Visual flow with optional branching |
-| **Before/After Comparisons** | Side-by-side with optional cost metrics |
-| **Savings Banner** | Highlight cost savings with percentage badge |
-| **Screenshot Lightbox** | Click screenshots to view full size |
-| **Responsive Design** | Works on mobile and desktop |
-
----
-
 ## Customization
 
 ### Changing Brand Color
@@ -248,13 +342,6 @@ Find and replace `#DC213C` in `style.css` and update the `rgba(220, 33, 60, ...)
 Update the Google Fonts import in `index.html`:
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-```
-
-And the font-family in `style.css`:
-```css
-body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-}
 ```
 
 ### Updating Header Info
@@ -278,8 +365,10 @@ Edit the footer section in `index.html`:
 | CSS changes not appearing | Bump `style.css?v=X` version in `index.html` |
 | Projects not rendering | Check browser console for JS errors; validate JSON syntax in `projects.js` |
 | Images not loading | Verify Supabase bucket is public; check URL is correct |
+| n8n workflow not rendering | Check for escape issues in workflow `data` string; use the Export tool |
 | Theme toggle not working | Ensure `style.css` has `[data-theme="light"]` block; bump CSS version |
 | PROJECTS is not defined | Syntax error in `projects.js` - check for missing commas |
+| Collapsible sections not working | Check for JS errors; ensure `toggleCollapsible` function exists |
 
 ### Common Syntax Errors in projects.js
 
@@ -298,29 +387,32 @@ points: [
 ]
 ```
 
-**Missing commas between object properties:**
+**Workflow data not properly escaped:**
 ```javascript
-// Wrong:
-metrics: {
-    label: "Cost"
-    value: "$100"
-}
+// Wrong - single quotes break with internal quotes:
+data: '{"nodes":[{"name":"Test's Node"}]}'
 
-// Correct:
-metrics: {
-    label: "Cost",
-    value: "$100"
-}
+// Correct - use escaped double quotes:
+data: "{\"nodes\":[{\"name\":\"Test's Node\"}]}"
 ```
 
 ---
 
 ## Tech Stack
 
-- HTML5
-- CSS3 (CSS Variables, Flexbox, Grid)
-- Vanilla JavaScript (ES5 compatible)
-- Google Fonts (Plus Jakarta Sans, JetBrains Mono)
-- Supabase Storage (image hosting)
-- DigitalOcean App Platform (hosting)
-- GitHub (version control + auto-deploy trigger)
+| Component | Technology |
+|-----------|------------|
+| **Frontend** | HTML5, CSS3, Vanilla JavaScript (ES5) |
+| **Fonts** | Google Fonts (Plus Jakarta Sans, JetBrains Mono) |
+| **Workflow Embeds** | n8n Demo Component |
+| **Image Hosting** | Supabase Storage |
+| **AI Processing** | Claude API (via n8n) |
+| **Automation** | n8n (self-hosted) |
+| **Hosting** | DigitalOcean App Platform |
+| **Version Control** | GitHub (auto-deploy trigger) |
+
+---
+
+## License
+
+Private repository - All rights reserved.
