@@ -1,5 +1,7 @@
 # datalytyks Portfolio Site
 
+A personal portfolio site for showcasing low-code/no-code solution development projects. Built with vanilla HTML, CSS, and JavaScript.# Datalytyks Portfolio Site
+
 A personal portfolio site for showcasing low-code/no-code solution development projects. Built with vanilla HTML, CSS, and JavaScript.
 
 **Live site:** [portfolio.datalytyks.com](https://portfolio.datalytyks.com)
@@ -11,9 +13,11 @@ A personal portfolio site for showcasing low-code/no-code solution development p
 ```
 /
 ├── index.html                  # Main page structure + inline JavaScript
-├── style.css                   # All styling (including dark/light themes)
+├── styles.css                  # All styling (including dark/light themes)
 ├── projects.js                 # Project data + tool/tag definitions
 ├── project-intake-form.html    # Project submission form with live preview
+├── n8n-demo-component/         # Custom n8n workflow viewer component
+│   └── n8n-demo.bundled.js     # Built component with disablenodeclicks support
 └── README.md                   # This file
 ```
 
@@ -156,7 +160,7 @@ Sections display in this order (if present):
 1. Export your workflow from n8n (Download as JSON)
 2. Upload the JSON file in the "n8n Workflows" section of the intake form
 3. Add a title for each workflow
-4. The form will trim it to just `nodes` and `connections` and handle escaping
+4. The form automatically **sanitizes** the workflow data (see Security below)
 
 #### Using the Export Tool
 
@@ -168,20 +172,39 @@ If adding workflows to an existing project:
 4. Click **📋 Export Workflows Only**
 5. Copy the output and paste into your project in `projects.js`
 
+#### Workflow Security (Sanitization)
+
+The intake form automatically strips sensitive data from workflows before submission:
+
+**Kept (for visual rendering):**
+- `id`, `name`, `type`, `typeVersion`, `position`, `disabled`
+- `connections` (how nodes link together)
+
+**Removed (sensitive):**
+- `parameters` (SQL queries, API endpoints, HTTP bodies, etc.)
+- `credentials` (credential references)
+- `webhookId`, `onError`, and other config
+
+This means:
+- ✅ Workflows render visually with all nodes and connections
+- ✅ Users can pan/zoom and click nodes
+- ✅ Node detail panels show empty content (no sensitive data exposed)
+- ✅ Custom component keeps interactions inside the workflow box (no fullscreen takeover)
+
 #### Manual Entry
 
-The workflow data must be a properly escaped JSON string containing only `nodes` and `connections`:
+The workflow data must be a properly escaped JSON string containing sanitized `nodes` and `connections`:
 
 ```javascript
 workflows: [
     {
         title: "My Workflow",
-        data: "{\"nodes\":[{\"parameters\":{...}}],\"connections\":{...}}"
+        data: "{\"nodes\":[{\"id\":\"1\",\"name\":\"Start\",\"type\":\"n8n-nodes-base.start\",\"position\":[250,300]}],\"connections\":{}}"
     }
 ]
 ```
 
-**Important:** Use `JSON.stringify()` to properly escape the workflow data, or use the Export tool in the intake form.
+**Important:** Always use the Export tool to ensure proper sanitization and escaping. Manual entry risks exposing sensitive data.
 
 ### Adding a New Tool/Tag
 
@@ -358,15 +381,42 @@ Edit the footer section in `index.html`:
 
 ---
 
+## Custom n8n Demo Component
+
+The site uses a custom fork of the [n8n-demo-component](https://github.com/n8n-io/n8n-demo-webcomponent) located in `/n8n-demo-component/`.
+
+### Custom Features
+
+| Attribute | Default | Description |
+|-----------|---------|-------------|
+| `disablenodeclicks` | `"false"` | When `"true"`, prevents node clicks from triggering fullscreen mode |
+
+This keeps all interactions (pan, zoom, node clicks) contained within the workflow viewer box instead of taking over the entire page.
+
+### Rebuilding the Component
+
+If you need to modify the component:
+
+```bash
+cd n8n-demo-component
+npm install
+npm run build
+```
+
+This generates a new `n8n-demo.bundled.js`.
+
+---
+
 ## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
-| CSS changes not appearing | Bump `style.css?v=X` version in `index.html` |
+| CSS changes not appearing | Bump `styles.css?v=X` version in `index.html` |
 | Projects not rendering | Check browser console for JS errors; validate JSON syntax in `projects.js` |
 | Images not loading | Verify Supabase bucket is public; check URL is correct |
 | n8n workflow not rendering | Check for escape issues in workflow `data` string; use the Export tool |
-| Theme toggle not working | Ensure `style.css` has `[data-theme="light"]` block; bump CSS version |
+| n8n workflow shows sensitive data | Re-export using the intake form's Export tool to sanitize |
+| Theme toggle not working | Ensure `styles.css` has `[data-theme="light"]` block; bump CSS version |
 | PROJECTS is not defined | Syntax error in `projects.js` - check for missing commas |
 | Collapsible sections not working | Check for JS errors; ensure `toggleCollapsible` function exists |
 
