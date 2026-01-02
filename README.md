@@ -18,6 +18,7 @@ A personal portfolio site for showcasing low-code/no-code solution development p
 ├── project-intake-form.html    # Project submission form with live preview
 ├── n8n-demo-component/         # Custom n8n workflow viewer component
 │   └── n8n-demo.bundled.js     # Built component with disablenodeclicks support
+|   └── README.md               # Documentation for the n8n demo component
 └── README.md                   # This file
 ```
 
