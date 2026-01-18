@@ -5,15 +5,15 @@
 const DEFINED_TAGS = {
     n8n: {
         label: "n8n",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/n8n-logo-v2.png"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/n8n-logo.png"
     },
     supabase: {
         label: "Supabase",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/supabase-logo-icon.png"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/supabase-logo.png"
     },
     hookdeck: {
         label: "HookDeck",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/hookdeck-logo-v2.png"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/hookdeck-logo.png"
     },
     digitalocean: {
         label: "DigitalOcean",
@@ -25,11 +25,11 @@ const DEFINED_TAGS = {
     },
     retool: {
         label: "Retool",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/retool-logo-v2.png"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/retool-logo.png"
     },
     make: {
         label: "Make",
-        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/Make-App-Icon-Circle.png"
+        icon: "https://vifobwjrrpembzncdips.supabase.co/storage/v1/object/public/software_logos/make-logo.png"
     },
     github: {
         label: "GitHub",
